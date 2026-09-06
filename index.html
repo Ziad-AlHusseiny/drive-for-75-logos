@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drive for 75 — Logo Vote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;1,400&family=Barlow+Condensed:ital,wght@1,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#00274C;--navy-2:#0a1f3a;--ink:#061a33;--maize:#FFCB05;--red:#B31942;--white:#fff;--cream:#f5f1e6;
+  --glow:rgba(255,203,5,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:"Barlow",sans-serif;overflow-x:hidden;
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%,rgba(255,203,5,.10),transparent 60%),
+    radial-gradient(900px 500px at 100% 20%,rgba(179,25,66,.18),transparent 60%),
+    linear-gradient(180deg,#041428 0%,#00274C 60%,#041428 100%);}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.road{position:fixed;left:50%;top:0;bottom:0;width:6px;transform:translateX(-50%);z-index:0;pointer-events:none;opacity:.25;
+  background:repeating-linear-gradient(180deg,var(--maize) 0 40px,transparent 40px 80px);animation:drive 1.6s linear infinite}
+@keyframes drive{to{background-position:0 80px}}
+.wrap{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 28px}
+
+/* HERO */
+.hero{min-height:92vh;display:grid;align-items:center;padding:80px 0 40px;position:relative}
+.eyebrow{font-family:"Barlow Condensed";font-style:italic;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--maize);font-size:14px;
+  animation:rise .8s .1s both}
+.hero h1{font-family:"Bebas Neue";font-size:clamp(84px,15vw,220px);line-height:.88;color:var(--white);letter-spacing:.01em;margin:14px 0 22px}
+.hero h1 span{display:block;animation:rise .9s both}
+.hero h1 span:nth-child(2){animation-delay:.15s}
+.hero h1 span:nth-child(3){color:var(--maize);animation-delay:.3s;position:relative}
+.hero h1 span:nth-child(3)::after{content:"";position:absolute;left:0;bottom:8px;height:14px;width:0;background:var(--red);transform:skewX(-20deg);animation:bar 1s .9s forwards}
+@keyframes bar{to{width:100%}}
+.hero p{max-width:520px;font-size:19px;line-height:1.5;color:#cfd6e0;animation:rise .9s .45s both}
+.hero .cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;animation:rise .9s .6s both}
+.btn{font-family:"Barlow Condensed";font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:18px;padding:14px 26px;border:2px solid var(--maize);color:var(--maize);background:transparent;cursor:pointer;text-decoration:none;transition:.25s;transform:skewX(-8deg)}
+.btn>*{display:inline-block;transform:skewX(8deg)}
+.btn:hover{background:var(--maize);color:var(--navy);box-shadow:0 0 30px var(--glow)}
+.btn.solid{background:var(--maize);color:var(--navy)}
+.btn.solid:hover{background:#ffd83d}
+.stats{position:absolute;right:0;bottom:60px;display:flex;gap:40px;animation:rise 1s .8s both}
+.stat b{font-family:"Bebas Neue";font-size:64px;color:var(--white);line-height:1;display:block}
+.stat span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9fb0c6}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+/* SECTIONS */
+section{padding:90px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:38px;flex-wrap:wrap}
+.sec-head h2{font-family:"Bebas Neue";font-size:clamp(48px,7vw,96px);line-height:.9;color:var(--white)}
+.sec-head h2 small{display:block;font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:15px;letter-spacing:.16em;color:var(--maize);margin-bottom:10px}
+.sec-head p{max-width:460px;color:#b8c4d4;font-size:16px;line-height:1.5}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+/* PALETTE */
+.pal{display:grid;grid-template-columns:3fr 2fr 1fr;gap:14px;height:180px}
+.sw{position:relative;border-radius:6px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;transition:.35s}
+.sw:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.sw b{font-family:"Bebas Neue";font-size:34px;line-height:1}
+.sw span{font-size:13px;letter-spacing:.08em;opacity:.85}
+
+/* GRID + CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+.card{position:relative;background:#fff;border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;opacity:0;transform:translateY(30px)}
+.card.in{animation:cardIn .7s forwards}
+@keyframes cardIn{to{opacity:1;transform:none}}
+.card img{width:100%;aspect-ratio:1;display:block;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.card:hover{transform:translateY(-10px) scale(1.04);box-shadow:0 0 0 2px var(--maize),0 0 40px var(--glow),0 30px 60px rgba(0,0,0,.5);z-index:2}
+.card:hover img{transform:scale(1.06)}
+.card .meta{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;background:linear-gradient(180deg,transparent,rgba(0,39,76,.92));color:#fff;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;transform:translateY(100%);transition:.35s}
+.card:hover .meta,.card.picked .meta{transform:none}
+.card .meta b{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:18px;letter-spacing:.04em;text-transform:uppercase}
+.card .meta small{display:block;font-size:12px;opacity:.8;font-style:normal;font-family:"Barlow"}
+.pick{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border:2px solid var(--maize);color:var(--maize);background:transparent;cursor:pointer;white-space:nowrap;transition:.2s}
+.pick:hover,.card.picked .pick{background:var(--maize);color:var(--navy)}
+.badge{position:absolute;top:12px;left:12px;width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;font-family:"Bebas Neue";font-size:22px;display:none;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.4);animation:pop .35s}
+.card.picked .badge{display:grid}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;background:rgba(2,12,26,.92);display:none;place-items:center;z-index:50;padding:30px;backdrop-filter:blur(6px)}
+.lb.open{display:grid}
+.lb img{max-width:min(90vw,760px);max-height:80vh;border-radius:12px;background:#fff;box-shadow:0 0 80px var(--glow);animation:pop .3s}
+.lb .cap{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font-family:"Bebas Neue";font-size:30px;color:var(--maize);letter-spacing:.04em}
+.lb .x{position:absolute;top:22px;right:28px;font-size:40px;color:#fff;cursor:pointer;background:none;border:0}
+
+/* VOTE DOCK */
+.dock{position:fixed;left:50%;bottom:22px;transform:translate(-50%,140%);z-index:40;background:var(--navy);border:2px solid var(--maize);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:16px;box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 30px rgba(255,203,5,.25);transition:transform .45s cubic-bezier(.2,.8,.2,1);max-width:calc(100vw - 30px)}
+.dock.show{transform:translate(-50%,0)}
+.dock .slots{display:flex;gap:8px}
+.slot{width:64px;height:64px;border-radius:8px;background:#fff;overflow:hidden;position:relative;border:2px dashed rgba(255,255,255,.3)}
+.slot img{width:100%;height:100%;object-fit:cover}
+.slot i{position:absolute;top:-6px;left:-6px;background:var(--red);color:#fff;font-style:normal;font-family:"Bebas Neue";font-size:15px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center}
+.dock .txt{font-size:13px;color:#b8c4d4;line-height:1.35}
+.dock .txt b{color:#fff;font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:17px;letter-spacing:.04em;text-transform:uppercase;display:block}
+
+/* VOTE SECTION */
+.vote-box{background:linear-gradient(135deg,#fff,#f3efe2);color:var(--navy);border-radius:16px;padding:40px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;box-shadow:0 40px 80px rgba(0,0,0,.45)}
+.vote-box h3{font-family:"Bebas Neue";font-size:56px;line-height:.95}
+.vote-box p{color:#3c4c60;line-height:1.5;margin:12px 0 22px}
+label{display:block;font-family:"Barlow Condensed";font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin:14px 0 6px;color:var(--navy)}
+input,textarea{width:100%;padding:12px 14px;border:2px solid #cfd6e0;border-radius:8px;font:16px "Barlow";background:#fff;color:var(--navy)}
+input:focus,textarea:focus{outline:none;border-color:var(--maize);box-shadow:0 0 0 4px rgba(255,203,5,.3)}
+.picks{display:grid;gap:10px}
+.pk{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid #e3e8ef;border-radius:10px;padding:8px}
+.pk img{width:56px;height:56px;border-radius:6px;object-fit:cover}
+.pk b{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:.03em}
+.pk small{display:block;color:#6b7a8f;font-size:12px}
+.pk .rm{margin-left:auto;background:none;border:0;color:var(--red);font-size:22px;cursor:pointer}
+.pk.empty{color:#9aa7b8;justify-content:center;border-style:dashed;height:74px;font-size:14px}
+.submit{margin-top:22px;width:100%;font-size:22px;padding:16px}
+.done{display:none;text-align:center;padding:30px}
+.done h4{font-family:"Bebas Neue";font-size:48px;color:var(--navy)}
+.done.show{display:block}
+
+/* RESULTS */
+.results{display:grid;gap:12px}
+.row{display:grid;grid-template-columns:60px 1fr 60px;align-items:center;gap:14px}
+.row img{width:60px;height:60px;border-radius:8px;background:#fff;object-fit:cover}
+.bar{height:34px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden;position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,var(--maize),#ffd83d);transition:width 1.2s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 20px var(--glow)}
+.bar span{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-family:"Barlow Condensed";font-style:italic;font-weight:800;text-transform:uppercase;font-size:15px;color:#fff;mix-blend-mode:difference;letter-spacing:.04em}
+.row b{font-family:"Bebas Neue";font-size:30px;text-align:right;color:var(--maize)}
+.muted{color:#8ea0b8;font-size:14px;margin-top:14px}
+
+footer{padding:60px 0;text-align:center;color:#7d8ea6;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.toast{position:fixed;top:20px;left:50%;transform:translate(-50%,-80px);background:var(--maize);color:var(--navy);font-family:"Barlow Condensed";font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:12px 20px;border-radius:8px;z-index:60;transition:.4s}
+.toast.show{transform:translate(-50%,0)}
+@media(max-width:820px){.vote-box{grid-template-columns:1fr;padding:26px}.stats{position:static;margin-top:40px}.pal{grid-template-columns:1fr 1fr;height:auto}.pal .sw{height:120px}.dock .txt{display:none}}
+</style>
+</head>
+<body>
+<div class="road"></div>
+<div class="toast" id="toast"></div>
+
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Logo presentation · Michigan pilot · Nonpartisan civic engagement</div>
+      <h1><span>Drive</span><span>For</span><span>75</span></h1>
+      <p>Six logo concepts, twenty options, one decision. Browse, hover, zoom in, then pick your top three and cast your vote. Every vote on the team counts.</p>
+      <div class="cta"><a class="btn solid" href="#concepts"><span>See the logos</span></a><a class="btn" href="#results"><span>Live results</span></a></div>
+    </div>
+    <div class="stats"><div class="stat"><b>6</b><span>Concepts</span></div><div class="stat"><b>20</b><span>Options</span></div><div class="stat"><b id="voteCount">0</b><span>Votes cast</span></div></div>
+  </header>
+
+  <section>
+    <div class="sec-head reveal"><h2><small>The palette</small>Maize, Blue &amp; Red</h2><p>Michigan Maize and Blue from the brand palette, with the official US flag red as the accent for the vote. Every option uses the same three colors, so you are comparing ideas, not palettes.</p></div>
+    <div class="pal reveal">
+      <div class="sw" style="background:#00274C;color:#fff"><b>Michigan Blue</b><span>PMS 282 · #00274C · Primary</span></div>
+      <div class="sw" style="background:#FFCB05;color:#00274C"><b>Michigan Maize</b><span>PMS 7406 · #FFCB05 · Secondary</span></div>
+      <div class="sw" style="background:#B31942;color:#fff"><b>Red</b><span>#B31942</span></div>
+    </div>
+  </section>
+
+  <div id="concepts"></div>
+
+  <section id="vote">
+    <div class="sec-head reveal"><h2><small>Cast your vote</small>Your top three</h2><p>Pick up to three options in order of preference. First choice earns 3 points, second 2, third 1.</p></div>
+    <div class="vote-box reveal">
+      <div>
+        <h3>Who is voting?</h3>
+        <p>Your name appears in the results so the team can discuss choices together.</p>
+        <label>Your name</label><input id="vName" placeholder="e.g. Ahmed">
+        <label>Comment (optional)</label><textarea id="vNote" rows="3" placeholder="What made you choose these?"></textarea>
+        <button class="btn solid submit" id="submitBtn"><span>Submit my vote</span></button>
+        <div class="done" id="done"><h4>Vote received. Thank you!</h4><p>You can scroll down to see the live results.</p></div>
+      </div>
+      <div>
+        <h3>Your picks</h3>
+        <p>Click "Pick" on any logo card, or click a pick here to remove it.</p>
+        <div class="picks" id="picks"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="results">
+    <div class="sec-head reveal"><h2><small>Live results</small>The leaderboard</h2><p>Weighted points from every submitted vote. Refreshes automatically.</p></div>
+    <div class="results reveal" id="resultsList"></div>
+    <p class="muted" id="resultsNote"></p>
+  </section>
+
+  <footer>Drive for 75 · Logo concepts · September 2026</footer>
+</div>
+
+<div class="lb" id="lb"><button class="x" id="lbX">×</button><img id="lbImg" alt=""><div class="cap" id="lbCap"></div></div>
+
+<div class="dock" id="dock">
+  <div class="slots" id="slots"></div>
+  <div class="txt"><b id="dockTitle">Your picks</b><span id="dockSub">Pick up to three</span></div>
+  <a class="btn solid" href="#vote"><span>Vote</span></a>
+</div>
+
+<script>
+/* ========= CONFIG =========
+   1) Deploy the Google Apps Script from apps-script.gs as a Web App (anyone can access).
+   2) Paste its URL below. Leave empty to use the email fallback. */
+const VOTE_ENDPOINT = "";
+const FALLBACK_EMAIL = "abo.hassan1789@gmail.com";
+
+const CONCEPTS = [
+ {name:"The Threshold", blurb:"A ring closed at three-quarters: the 75% goal made visible. The open quarter is the invitation.",
+  items:[["Threshold · White","threshold-white"],["Threshold · Navy","threshold-navy"]]},
+ {name:"The Doorstep", blurb:"A doorway arch with the 75 inside. Every result begins at a household door.",
+  items:[["Doorstep · White","doorstep-white"],["Doorstep · Maize","doorstep-maize"]]},
+ {name:"The Centerline", blurb:"The numeral is the road. A dashed highway centerline runs through the 75.",
+  items:[["Centerline · White","centerline-white"],["Centerline · Maize","centerline-maize"],["Centerline · Navy","centerline-navy"],["Centerline · Dashes on the 7","centerline-seven"]]},
+ {name:"The Corridor", blurb:"The 7 and 5 drawn as one continuous highway with exits. Each exit is a community.",
+  items:[["Corridor · White","corridor-white"],["Corridor · Maize","corridor-maize"],["Corridor · Navy","corridor-navy"],["Corridor · Three exits","corridor-three-exits"]]},
+ {name:"The Campaign", blurb:"American campaign graphics with Interstate 75 drawn on the Michigan map, starting at Detroit.",
+  items:[["Campaign · Map, star & stripes","campaign-star-stripes"],["Campaign · Map with the I-75 line","campaign-i75-line"],["Campaign · Navy","campaign-navy"],["Campaign · Button","campaign-button"]]},
+ {name:"One Block", blurb:"The campaign idea rebuilt as a single fused mark: the road is a stroke of the type, the map is locked into the block.",
+  items:[["One Block · The Plate","oneblock-plate"],["One Block · Road into the 7","oneblock-road-into-7"],["One Block · Spine emblem","oneblock-spine-emblem"],["One Block · Ribbon","oneblock-ribbon"]]},
+];
+const ALL = {}; CONCEPTS.forEach(c=>c.items.forEach(([n,id])=>ALL[id]={name:n,concept:c.name}));
+const $ = s=>document.querySelector(s);
+let picks = JSON.parse(localStorage.getItem("d75picks")||"[]");
+
+/* build concept sections */
+const host = $("#concepts");
+CONCEPTS.forEach((c,ci)=>{
+  const s=document.createElement("section");
+  s.innerHTML=`<div class="sec-head reveal"><h2><small>Concept ${ci+1} of ${CONCEPTS.length}</small>${c.name}</h2><p>${c.blurb}</p></div><div class="grid"></div>`;
+  const g=s.querySelector(".grid");
+  c.items.forEach(([name,id],i)=>{
+    const card=document.createElement("article");card.className="card";card.dataset.id=id;card.style.animationDelay=(i*.08)+"s";
+    card.innerHTML=`<div class="badge"></div><img src="logos/${id}.svg" alt="${name}" loading="lazy"><div class="meta"><b>${name}<small>${c.name}</small></b><button class="pick">Pick</button></div>`;
+    card.querySelector("img").addEventListener("click",()=>openLb(id));
+    card.querySelector(".pick").addEventListener("click",e=>{e.stopPropagation();togglePick(id)});
+    g.appendChild(card);
+  });
+  host.appendChild(s);
+});
+
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll(".reveal,.card").forEach(el=>io.observe(el));
+
+/* lightbox */
+function openLb(id){$("#lbImg").src=`logos/${id}.svg`;$("#lbCap").textContent=ALL[id].name;$("#lb").classList.add("open")}
+$("#lbX").onclick=()=>$("#lb").classList.remove("open");
+$("#lb").addEventListener("click",e=>{if(e.target.id==="lb")$("#lb").classList.remove("open")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#lb").classList.remove("open")});
+
+/* picks */
+function togglePick(id){
+  const i=picks.indexOf(id);
+  if(i>-1)picks.splice(i,1);
+  else{ if(picks.length>=3){toast("You already have three picks. Remove one first.");return} picks.push(id);toast(`Pick ${picks.length}: ${ALL[id].name}`)}
+  localStorage.setItem("d75picks",JSON.stringify(picks));render();
+}
+function render(){
+  document.querySelectorAll(".card").forEach(c=>{const i=picks.indexOf(c.dataset.id);c.classList.toggle("picked",i>-1);c.querySelector(".badge").textContent=i>-1?i+1:"";c.querySelector(".pick").textContent=i>-1?"Picked":"Pick"});
+  $("#slots").innerHTML=[0,1,2].map(i=>picks[i]?`<div class="slot"><i>${i+1}</i><img src="logos/${picks[i]}.svg"></div>`:`<div class="slot"></div>`).join("");
+  $("#dock").classList.toggle("show",picks.length>0);
+  $("#dockSub").textContent=picks.length<3?`${3-picks.length} more to go, or vote now`:"Ready to vote";
+  $("#picks").innerHTML=[0,1,2].map(i=>picks[i]?`<div class="pk"><img src="logos/${picks[i]}.svg"><div><b>${i+1}. ${ALL[picks[i]].name}</b><small>${ALL[picks[i]].concept} · ${3-i} pts</small></div><button class="rm" data-id="${picks[i]}">×</button></div>`:`<div class="pk empty">Choice ${i+1}</div>`).join("");
+  document.querySelectorAll(".rm").forEach(b=>b.onclick=()=>togglePick(b.dataset.id));
+}
+let tt;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),2200)}
+
+/* submit */
+$("#submitBtn").onclick=async()=>{
+  const name=$("#vName").value.trim();
+  if(!name){toast("Please enter your name");$("#vName").focus();return}
+  if(!picks.length){toast("Pick at least one logo first");return}
+  const payload={name,note:$("#vNote").value.trim(),picks:picks.map(id=>ALL[id].name),ids:picks,ts:new Date().toISOString()};
+  if(VOTE_ENDPOINT){
+    try{await fetch(VOTE_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(payload)});
+      localStorage.setItem("d75voted","1");$("#done").classList.add("show");$("#submitBtn").style.display="none";toast("Vote submitted");setTimeout(loadResults,1500);
+    }catch(e){toast("Could not reach the vote server. Try again.")}
+  }else{
+    const body=`Drive for 75 logo vote\n\nName: ${name}\n1st: ${payload.picks[0]||"-"}\n2nd: ${payload.picks[1]||"-"}\n3rd: ${payload.picks[2]||"-"}\n\nComment: ${payload.note||"-"}`;
+    location.href=`mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent("Drive for 75 logo vote — "+name)}&body=${encodeURIComponent(body)}`;
+    $("#done").classList.add("show");toast("Opening your email app to send the vote");
+  }
+};
+
+/* results */
+async function loadResults(){
+  const list=$("#resultsList"),note=$("#resultsNote");
+  if(!VOTE_ENDPOINT){note.textContent="Live results appear here once the vote server is connected. Votes are currently collected by email.";return}
+  try{
+    const r=await fetch(VOTE_ENDPOINT+"?t="+Date.now());const data=await r.json();
+    const pts={};let voters=0;
+    data.votes.forEach(v=>{voters++;(v.ids||[]).forEach((id,i)=>{pts[id]=(pts[id]||0)+(3-i)})});
+    $("#voteCount").textContent=voters;
+    const rows=Object.entries(pts).sort((a,b)=>b[1]-a[1]);const max=rows[0]?rows[0][1]:1;
+    list.innerHTML=rows.map(([id,p])=>`<div class="row"><img src="logos/${id}.svg"><div class="bar"><i style="width:${p/max*100}%"></i><span>${ALL[id]?ALL[id].name:id}</span></div><b>${p}</b></div>`).join("")||"<p class='muted'>No votes yet. Be the first.</p>";
+    note.textContent=`${voters} vote${voters===1?"":"s"} · updated ${new Date().toLocaleTimeString()}`;
+  }catch(e){note.textContent="Results could not be loaded right now."}
+}
+render();loadResults();setInterval(loadResults,20000);
+</script>
+</body>
+</html>
