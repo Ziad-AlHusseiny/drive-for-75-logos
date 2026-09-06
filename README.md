@@ -69,7 +69,3 @@ python -m http.server 8000
 ```
 
 then visit `http://localhost:8000`.
-
-## Credits
-
-Brand strategy, logo concepts and presentation by Ahmed Ghanim. Logo explorations generated with Recraft V4.1 (vector) via Higgsfield.
