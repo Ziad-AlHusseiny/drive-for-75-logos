@@ -2,257 +2,401 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Drive for 75 — Brand Identity</title>
-<meta name="description" content="Brand identity guide for Drive for 75, a nonpartisan grassroots voter-turnout initiative in Michigan.">
+<meta name="description" content="The Drive for 75 brand identity: a mark built from Michigan, Detroit and Interstate 75. Concept, construction, lockups, colour, type, motion, usage and downloads.">
+<link rel="icon" type="image/svg+xml" href="assets/svg/drive-for-75_full-color_no-tagline.svg">
+<meta property="og:title" content="Drive for 75 — Brand Identity">
+<meta property="og:description" content="Brand guide for a nonpartisan grassroots voter-turnout initiative in Michigan.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,900&family=Barlow+Condensed:ital,wght@0,500;0,600;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,900&family=Barlow+Condensed:ital,wght@0,500;0,600;1,700;1,800&display=swap">
 <style>
 :root{
-  --blue:#00274C; --blue-2:#01315e; --maize:#FFCB05; --red:#B31942; --white:#FFFFFF;
-  --bg:#FAF8F2; --panel:#FFFFFF; --ink:#0E1B2A; --sub:#4a5568; --line:#E4E1D6;
-  --mono-r:0,39,76;
+  --blue:#00274C; --maize:#FFCB05; --red:#B31942; --white:#FFFFFF;
+  --paper:#FAF8F2; --card:#FFFFFF; --ink:#0E1B2A; --ink-2:#4A5A6E; --muted:#8494A6;
+  --line:#E4E0D4;
+  --ease:cubic-bezier(.22,.8,.3,1); --spring:cubic-bezier(.34,1.56,.64,1);
+  --disp:"Barlow Condensed",sans-serif; --body:"Barlow",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#061426; --card:#0B1E36; --ink:#F2F4F7; --ink-2:#A6B6C9; --muted:#71849B; --line:#17304F;
+  }
 }
 :root[data-theme="dark"]{
-  --bg:#071427; --panel:#0c1e38; --ink:#F5F4EE; --sub:#a9b6c9; --line:#1c3253;
+  --paper:#061426; --card:#0B1E36; --ink:#F2F4F7; --ink-2:#A6B6C9; --muted:#71849B; --line:#17304F;
 }
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Barlow",sans-serif;transition:background .3s,color .3s}
-img{max-width:100%;display:block}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.6;
+     -webkit-font-smoothing:antialiased;overflow-x:hidden;
+     transition:background .5s var(--ease),color .5s var(--ease)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
 ::selection{background:var(--maize);color:var(--blue)}
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
-.dispcond{font-family:"Barlow Condensed",sans-serif}
+.wrap{max-width:1140px;margin:0 auto;padding:0 32px}
+@media(max-width:640px){.wrap{padding:0 20px}}
 
-/* NAV */
-nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav.top .row{display:flex;align-items:center;gap:28px;height:60px}
-.brandmark{display:flex;align-items:center;gap:8px;font-family:"Barlow Condensed";font-weight:800;font-style:italic;font-size:19px;letter-spacing:.01em;color:var(--ink);text-decoration:none;flex-shrink:0}
-.brandmark .sw{width:11px;height:11px;border-radius:2px;background:var(--red)}
-.navlinks{display:flex;gap:22px;flex:1;overflow-x:auto;scrollbar-width:none}
-.navlinks::-webkit-scrollbar{display:none}
-.navlinks a{color:var(--sub);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap;transition:.2s}
-.navlinks a:hover{color:var(--ink)}
-.themebtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:7px 14px;font:600 12px "Barlow";cursor:pointer;display:flex;align-items:center;gap:7px;flex-shrink:0}
-.themebtn .dot{width:9px;height:9px;border-radius:50%;background:var(--maize)}
+/* progress + cursor */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--red);z-index:100;transition:width .1s linear}
+#cur{position:fixed;top:0;left:0;width:12px;height:12px;border-radius:50%;background:var(--red);
+     pointer-events:none;z-index:99;transform:translate(-50%,-50%);opacity:0;
+     transition:width .25s var(--ease),height .25s var(--ease),opacity .3s}
+#cur.big{width:42px;height:42px;opacity:.4}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){#cur{display:none}}
 
-/* HERO */
-.hero{padding:120px 0 90px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:
-  repeating-linear-gradient(90deg,transparent 0 78px, color-mix(in srgb, var(--ink) 5%, transparent) 78px 80px);
-  mask-image:linear-gradient(180deg,black,transparent 70%); pointer-events:none}
-.hero .eyebrow{font:700 12px/1 "Barlow";letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin:0 0 26px}
-.hero .mark{max-width:560px;margin:0 auto 30px;position:relative;z-index:1}
-.hero .mark img{width:100%}
-.hero h1{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:clamp(30px,4.4vw,52px);margin:0 0 16px;letter-spacing:.005em}
-.hero p.lede{max-width:560px;margin:0 auto;color:var(--sub);font-size:17px;line-height:1.6}
-.hero .cred{margin-top:44px;font-size:12px;color:var(--sub);letter-spacing:.03em}
-.scrollcue{margin-top:50px;font:700 11px "Barlow";letter-spacing:.2em;color:var(--sub);text-transform:uppercase}
-.scrollcue::after{content:"";display:block;width:1px;height:34px;background:var(--line);margin:10px auto 0;animation:cue 1.8s ease-in-out infinite}
-@keyframes cue{0%,100%{transform:scaleY(.4);opacity:.3}50%{transform:scaleY(1);opacity:1}}
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:var(--paper);
+    background:color-mix(in srgb,var(--paper) 84%,transparent);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .in{display:flex;align-items:center;gap:22px;height:64px}
+nav .brand{display:flex;align-items:center;gap:9px;font-family:var(--disp);font-style:italic;
+           font-weight:800;font-size:1.12rem;letter-spacing:.01em;flex-shrink:0}
+nav .brand .chip{width:11px;height:11px;border-radius:2px;background:var(--red)}
+nav .links{display:flex;gap:20px;margin-left:auto;font-size:.78rem;font-weight:600;
+           letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+nav .links a{position:relative;padding:4px 0;transition:color .25s;white-space:nowrap}
+nav .links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--red);transition:width .3s var(--ease)}
+nav .links a:hover,nav .links a.on{color:var(--ink)}
+nav .links a:hover::after,nav .links a.on::after{width:100%}
+@media(max-width:1000px){nav .links{display:none}}
+.toggle{display:flex;align-items:center;gap:8px;margin-left:auto;font-size:.74rem;font-weight:600;
+        color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:99px;
+        padding:6px 13px 6px 8px;cursor:pointer;font-family:inherit;transition:border-color .3s,color .3s}
+@media(min-width:1001px){.toggle{margin-left:0}}
+.toggle:hover{border-color:var(--red);color:var(--ink)}
+.toggle .knob{width:32px;height:18px;border-radius:99px;background:var(--line);position:relative;transition:background .3s}
+.toggle .knob::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+                   background:var(--maize);transition:transform .35s var(--spring)}
+.toggle.dark .knob::after{transform:translateX(14px)}
 
-/* SECTION shell */
-section{padding:96px 0;border-top:1px solid var(--line)}
-.kicker{font:700 12px "Barlow";letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin:0 0 10px}
-h2.h{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:clamp(30px,4.2vw,46px);margin:0 0 18px;letter-spacing:.005em}
-p.dek{max-width:640px;color:var(--sub);font-size:16.5px;line-height:1.65;margin:0 0 48px}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
+/* ═══ HERO ═══ */
+#hero{position:relative;min-height:calc(100vh - 64px);display:flex;flex-direction:column;
+      align-items:center;justify-content:center;text-align:center;padding:56px 20px 96px;overflow:hidden}
+.lanes{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+       -webkit-mask-image:radial-gradient(ellipse 76% 60% at 50% 46%,#000 26%,transparent 76%);
+       mask-image:radial-gradient(ellipse 76% 60% at 50% 46%,#000 26%,transparent 76%)}
+.lanes i{position:absolute;left:-10%;width:120%;height:9px;opacity:0;transform:translateX(-140px);
+         background:repeating-linear-gradient(90deg,var(--maize) 0 46px,transparent 46px 100px)}
+.lanes i:nth-child(2){background:repeating-linear-gradient(90deg,var(--red) 0 46px,transparent 46px 100px)}
+.lanes i:nth-child(1){top:36%} .lanes i:nth-child(2){top:47%} .lanes i:nth-child(3){top:58%}
+#hero.go .lanes i{animation:laneIn 1.5s var(--ease) forwards}
+#hero.go .lanes i:nth-child(1){animation-delay:.15s}
+#hero.go .lanes i:nth-child(2){animation-delay:.3s}
+#hero.go .lanes i:nth-child(3){animation-delay:.45s}
+@keyframes laneIn{to{opacity:.13;transform:none}}
+.hero-in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
 
-/* 01 IDEA */
-.idea-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.idea-card{background:var(--panel);padding:30px 24px;min-height:220px;display:flex;flex-direction:column;gap:14px}
-.idea-card .n{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:38px;color:var(--line)}
-.idea-card h3{margin:0;font-family:"Barlow Condensed";font-weight:700;font-size:19px;letter-spacing:.01em}
-.idea-card p{margin:0;color:var(--sub);font-size:14.5px;line-height:1.55;flex:1}
-.idea-card .tag{align-self:flex-start;font:700 10.5px "Barlow";letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:5px;color:#fff}
-@media(max-width:860px){.idea-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.idea-grid{grid-template-columns:1fr}}
+.eyebrow-h{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+           color:var(--red);margin-bottom:30px;opacity:0}
+#hero.go .eyebrow-h{animation:fadeUp .7s var(--ease) .1s forwards}
 
-/* 02 CONSTRUCTION */
-.constr{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:start}
-.constr .stage{position:sticky;top:90px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:34px;display:flex;align-items:center;justify-content:center;min-height:340px}
-.constr .stage svg-holder{display:block}
-#constrSvg{width:100%;height:auto}
-#constrSvg [data-part]{transition:opacity .35s}
-#constrSvg.dim [data-part]{opacity:.14}
-#constrSvg.dim [data-part].active{opacity:1}
-.speclist{display:grid;gap:2px}
-.spec{padding:18px 20px;border:1px solid var(--line);border-radius:10px;cursor:pointer;transition:.2s;background:var(--panel)}
-.spec + .spec{margin-top:10px}
-.spec:hover,.spec.active{border-color:var(--red)}
-.spec b{display:block;font-family:"Barlow Condensed";font-weight:700;font-size:16.5px;margin-bottom:5px}
-.spec span{color:var(--sub);font-size:13.5px;line-height:1.55}
-.spec code{background:color-mix(in srgb, var(--ink) 6%, transparent);padding:1px 6px;border-radius:4px;font-size:12.5px}
-@media(max-width:900px){.constr{grid-template-columns:1fr}.constr .stage{position:static}}
+.heroLogo{width:min(620px,86vw);margin-bottom:34px}
+.heroLogo svg{width:100%;height:auto;overflow:visible}
+.heroLogo [class^="hs-"]{transform-box:fill-box}
+.hs-map{opacity:0;transform:translateY(24px) scale(.95);transform-origin:50% 100%}
+#hero.go .hs-map{animation:mapIn .85s var(--ease) .35s forwards}
+.hs-star{opacity:0;transform:scale(0);transform-origin:50% 50%}
+#hero.go .hs-star{animation:starPop .7s var(--spring) 1s forwards}
+.hs-ring{fill:none;stroke:var(--red);stroke-width:5;opacity:0;transform-origin:50% 50%;transform-box:fill-box}
+#hero.go .hs-ring{animation:ring 1.1s var(--ease) 1.1s forwards}
+.hs-drive,.hs-for{opacity:0;transform:translateX(-52px)}
+#hero.go .hs-drive{animation:slideIn .8s var(--ease) 1.2s forwards}
+#hero.go .hs-for{animation:slideIn .8s var(--ease) 1.33s forwards}
+.hs-stripe{transform:scaleX(0);transform-origin:0% 50%}
+#hero.go .hs-stripe{animation:stripeRun .72s var(--ease) forwards}
+#hero.go .hs-stripe:nth-child(1){animation-delay:1.62s}
+#hero.go .hs-stripe:nth-child(2){animation-delay:1.74s}
+#hero.go .hs-stripe:nth-child(3){animation-delay:1.86s}
+.hs-num{opacity:0;transform:translateX(96px)}
+#hero.go .hs-num{animation:numIn .95s var(--spring) 1.78s forwards}
+.hs-tag{opacity:0}
+#hero.go .hs-tag{animation:fadeUp .8s var(--ease) 2.45s forwards}
+@keyframes mapIn{to{opacity:1;transform:none}}
+@keyframes starPop{0%{opacity:0;transform:scale(0) rotate(-50deg)}60%{opacity:1}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes ring{0%{opacity:.9;transform:scale(.5)}100%{opacity:0;transform:scale(3.6)}}
+@keyframes slideIn{to{opacity:1;transform:none}}
+@keyframes stripeRun{to{transform:scaleX(1)}}
+@keyframes numIn{to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 
-/* 03 LOCKUPS */
-.lockups{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.lock-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
-.lock-swatch{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:22px}
-.lock-swatch img{width:100%}
-.lock-meta{padding:12px 14px;border-top:1px solid var(--line)}
-.lock-meta b{display:block;font-family:"Barlow Condensed";font-weight:700;font-size:14.5px}
-.lock-meta span{color:var(--sub);font-size:12px}
-@media(max-width:900px){.lockups{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.lockups{grid-template-columns:1fr}}
+#hero h1{font-family:var(--disp);font-style:italic;font-weight:800;font-size:clamp(2rem,5.2vw,3.6rem);
+         line-height:1.04;letter-spacing:.005em;max-width:16ch;text-wrap:balance}
+#hero h1 span{display:inline-block;opacity:0;transform:translateY(30px)}
+#hero.go h1 span{animation:fadeUp .75s var(--ease) forwards}
+#hero .lede{margin-top:20px;font-size:1.06rem;color:var(--ink-2);max-width:56ch;opacity:0}
+#hero.go .lede{animation:fadeUp .75s var(--ease) 2.95s forwards}
+#hero .credit{margin-top:16px;font-size:.8rem;color:var(--muted);letter-spacing:.04em;opacity:0}
+#hero.go .credit{animation:fadeUp .75s var(--ease) 3.1s forwards}
+#hero .cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;
+           flex-direction:column;align-items:center;gap:9px;font-size:.68rem;letter-spacing:.2em;
+           text-transform:uppercase;color:var(--muted);opacity:0;z-index:1}
+#hero.go .cue{animation:fadeUp .75s var(--ease) 3.25s forwards}
+#hero .cue i{width:1px;height:34px;background:var(--muted);display:block;animation:cue 1.9s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}
+               51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-/* 04 COLOUR */
-.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:44px}
-.swatch{border-radius:14px;padding:22px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;border:1px solid var(--line);position:relative;transition:transform .2s}
-.swatch:hover{transform:translateY(-4px)}
-.swatch b{font-family:"Barlow Condensed";font-weight:700;font-size:19px}
-.swatch span{font-size:12.5px;opacity:.9;font-family:monospace}
-.swatch small{font-size:11px;opacity:.75;display:block;margin-top:6px}
-.swatch .copied{position:absolute;top:14px;right:14px;font:700 10px "Barlow";letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.92);color:#000;padding:4px 8px;border-radius:6px;opacity:0;transition:.2s}
-.swatch.copied .copied{opacity:1}
-@media(max-width:860px){.swatches{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.swatches{grid-template-columns:1fr}}
-.balance{display:flex;height:38px;border-radius:8px;overflow:hidden;margin-bottom:14px}
-.balance i{display:flex;align-items:center;justify-content:center;font:700 11px "Barlow";color:#fff;letter-spacing:.04em}
-.avoid{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
-.avoidchip{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:7px 14px 7px 8px;font-size:13px;color:var(--sub)}
-.avoidchip i{width:20px;height:20px;border-radius:50%;display:inline-block}
+/* ═══ SECTIONS ═══ */
+section{padding:106px 0;border-top:1px solid var(--line);scroll-margin-top:64px}
+#hero{border-top:0}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:.72rem;font-weight:700;letter-spacing:.2em;
+         text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--red)}
+h2{font-family:var(--disp);font-style:italic;font-weight:800;font-size:clamp(1.8rem,3.8vw,2.7rem);
+   line-height:1.1;letter-spacing:.005em;max-width:22ch;text-wrap:balance}
+.lead{margin-top:16px;font-size:1.04rem;color:var(--ink-2);max-width:60ch;margin-bottom:52px}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.stag>*{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.stag.in>*{opacity:1;transform:none}
+.stag.in>*:nth-child(1){transition-delay:.05s}.stag.in>*:nth-child(2){transition-delay:.12s}
+.stag.in>*:nth-child(3){transition-delay:.19s}.stag.in>*:nth-child(4){transition-delay:.26s}
+.stag.in>*:nth-child(5){transition-delay:.33s}.stag.in>*:nth-child(6){transition-delay:.4s}
+.stag.in>*:nth-child(7){transition-delay:.47s}.stag.in>*:nth-child(8){transition-delay:.54s}
 
-/* 05 TYPE */
-.type-block{border:1px solid var(--line);border-radius:14px;padding:34px;margin-bottom:18px;background:var(--panel)}
-.type-block .role{font:700 11px "Barlow";letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
-.type-block .sample{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:clamp(38px,6vw,68px);line-height:1;margin:0 0 18px}
-.type-block.numeral .sample{font-family:"Barlow";font-weight:900;font-style:italic;color:var(--red)}
-.type-block.tag .sample{font-family:"Barlow";font-weight:700;font-style:normal;font-size:clamp(20px,3vw,30px);letter-spacing:.09em}
-.type-meta{display:flex;gap:26px;flex-wrap:wrap;color:var(--sub);font-size:13px}
-.type-meta b{color:var(--ink)}
+/* 01 idea */
+.ideas{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.idea{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 22px;
+      display:flex;flex-direction:column;gap:12px;min-height:230px;transition:border-color .3s,transform .3s var(--ease)}
+.idea:hover{border-color:var(--red);transform:translateY(-4px)}
+.idea .n{font-family:var(--disp);font-style:italic;font-weight:800;font-size:2.3rem;line-height:1;color:var(--line)}
+.idea h3{font-family:var(--disp);font-weight:700;font-size:1.18rem;letter-spacing:.01em}
+.idea p{font-size:.9rem;color:var(--ink-2);line-height:1.55;flex:1}
+.idea .k{align-self:flex-start;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+         padding:4px 9px;border-radius:5px;color:#fff}
+@media(max-width:900px){.ideas{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.ideas{grid-template-columns:1fr}}
 
-/* 06 SCALE */
-.scalebox{border:1px solid var(--line);border-radius:16px;padding:44px;text-align:center;background:var(--panel)}
-.scale-stage{display:flex;align-items:center;justify-content:center;height:220px}
-.scale-stage img{transition:width .1s linear}
-input[type=range]{width:100%;max-width:420px;margin:28px auto 8px;accent-color:var(--red)}
-.scale-readout{font:700 13px "Barlow Condensed";letter-spacing:.05em;color:var(--sub)}
-.scale-marks{display:flex;justify-content:space-between;max-width:420px;margin:0 auto;color:var(--sub);font-size:11px}
+/* 02 construction */
+.build{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:start}
+.build .stage{position:sticky;top:92px;background:var(--card);border:1px solid var(--line);border-radius:16px;
+              padding:34px;display:flex;align-items:center;justify-content:center;min-height:320px}
+.build .stage svg{width:100%;height:auto}
+.build .stage svg [data-part]{transition:opacity .4s var(--ease)}
+.build .stage svg.dim [data-part]{opacity:.12}
+.build .stage svg.dim [data-part].act{opacity:1}
+.spec{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:17px 19px;cursor:pointer;
+      transition:border-color .25s,transform .25s var(--ease)}
+.spec+.spec{margin-top:9px}
+.spec:hover,.spec.act{border-color:var(--red);transform:translateX(4px)}
+.spec b{display:block;font-family:var(--disp);font-weight:700;font-size:1.02rem;margin-bottom:4px}
+.spec span{font-size:.85rem;color:var(--ink-2);line-height:1.55}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8em;
+     background:color-mix(in srgb,var(--ink) 7%,transparent);padding:1px 6px;border-radius:4px}
+@media(max-width:900px){.build{grid-template-columns:1fr;gap:28px}.build .stage{position:static}}
 
-/* 07 MOTION */
-.motionrow{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.motion-stage{border:1px solid var(--line);border-radius:16px;padding:50px 30px;background:var(--panel);display:flex;align-items:center;justify-content:center;min-height:220px}
-.mstripes{display:flex;flex-direction:column;gap:9px;width:220px}
-.mstripes i{height:20px;border-radius:0 3px 3px 0;transform-origin:left center;transform:scaleX(0)}
-.mstripes i:nth-child(1){background:var(--maize)}
-.mstripes i:nth-child(2){background:var(--red)}
-.mstripes i:nth-child(3){background:var(--maize)}
-.motion-stage.play .mstripes i{animation:mgrow 1.1s cubic-bezier(.2,.8,.2,1) forwards}
-.motion-stage.play .mstripes i:nth-child(1){animation-delay:0s}
-.motion-stage.play .mstripes i:nth-child(2){animation-delay:.12s}
-.motion-stage.play .mstripes i:nth-child(3){animation-delay:.24s}
-@keyframes mgrow{to{transform:scaleX(1)}}
-.motionsteps{display:grid;gap:16px}
+/* 03 lockups */
+.locks{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.lock{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:var(--card);transition:transform .3s var(--ease)}
+.lock:hover{transform:translateY(-5px)}
+.lock .sq{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:22px}
+.lock .mt{padding:12px 14px;border-top:1px solid var(--line)}
+.lock .mt b{display:block;font-family:var(--disp);font-weight:700;font-size:.94rem}
+.lock .mt span{font-size:.76rem;color:var(--muted)}
+@media(max-width:900px){.locks{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.locks{grid-template-columns:1fr}}
+
+/* 04 colour */
+.sws{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
+.sw{position:relative;border-radius:14px;padding:22px;min-height:158px;display:flex;flex-direction:column;
+    justify-content:flex-end;cursor:pointer;border:1px solid transparent;transition:transform .3s var(--ease)}
+.sw:hover{transform:translateY(-5px)}
+.sw b{font-family:var(--disp);font-weight:700;font-size:1.15rem;letter-spacing:.01em}
+.sw .hex{font-family:ui-monospace,monospace;font-size:.82rem;opacity:.92}
+.sw small{font-size:.72rem;opacity:.8;margin-top:5px}
+.sw .cp{position:absolute;top:13px;right:13px;font-size:.6rem;font-weight:700;letter-spacing:.1em;
+        text-transform:uppercase;background:rgba(255,255,255,.94);color:#111;padding:4px 8px;border-radius:6px;
+        opacity:0;transform:translateY(-4px);transition:.25s var(--ease)}
+.sw.done .cp{opacity:1;transform:none}
+@media(max-width:900px){.sws{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.sws{grid-template-columns:1fr}}
+.bal{display:flex;height:40px;border-radius:9px;overflow:hidden;margin-bottom:16px}
+.bal i{display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;
+       letter-spacing:.06em;color:#fff;font-style:normal}
+.avoid{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.chip{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:99px;
+      padding:7px 15px 7px 8px;font-size:.82rem;color:var(--ink-2)}
+.chip i{width:20px;height:20px;border-radius:50%;flex-shrink:0}
+
+/* 05 type */
+.tblock{border:1px solid var(--line);border-radius:15px;padding:32px;background:var(--card)}
+.tblock+.tblock{margin-top:14px}
+.tblock .k{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.tblock .sample{font-family:var(--disp);font-style:italic;font-weight:800;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1;margin-bottom:18px}
+.tblock.num .sample{font-family:var(--body);font-weight:900;font-style:italic;color:var(--red)}
+.tblock.tag .sample{font-family:var(--body);font-weight:700;font-style:normal;font-size:clamp(1.2rem,3vw,1.85rem);letter-spacing:.09em}
+.tmeta{display:flex;flex-wrap:wrap;gap:24px;font-size:.84rem;color:var(--ink-2)}
+.tmeta b{color:var(--ink);font-weight:600}
+
+/* 06 scale */
+.scalebox{border:1px solid var(--line);border-radius:16px;padding:44px 34px;text-align:center;background:var(--card)}
+.scale-stage{display:flex;align-items:center;justify-content:center;height:210px}
+input[type=range]{width:100%;max-width:420px;margin:26px auto 10px;accent-color:var(--red);display:block}
+.readout{font-family:var(--disp);font-weight:700;font-size:.95rem;letter-spacing:.05em;color:var(--ink-2)}
+.marks{display:flex;justify-content:space-between;max-width:420px;margin:6px auto 0;font-size:.7rem;color:var(--muted)}
+
+/* 07 motion */
+.mrow{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
+.mstage{border:1px solid var(--line);border-radius:16px;background:var(--card);min-height:230px;
+        display:flex;align-items:center;justify-content:center;padding:44px 30px}
+.bars{display:flex;flex-direction:column;gap:10px;width:230px}
+.bars i{height:22px;border-radius:0 3px 3px 0;transform-origin:left center;transform:scaleX(0)}
+.bars i:nth-child(1),.bars i:nth-child(3){background:var(--maize)}
+.bars i:nth-child(2){background:var(--red)}
+.mstage.play .bars i{animation:stripeRun .72s var(--ease) forwards}
+.mstage.play .bars i:nth-child(2){animation-delay:.12s}
+.mstage.play .bars i:nth-child(3){animation-delay:.24s}
+.msteps{display:grid;gap:15px;margin-bottom:22px}
 .mstep{display:flex;gap:16px}
-.mstep .t{font-family:"Barlow Condensed";font-weight:700;color:var(--red);width:64px;flex-shrink:0;font-size:13px;padding-top:2px}
-.mstep p{margin:0;color:var(--sub);font-size:14px;line-height:1.55}
-.replaybtn{margin-top:8px;border:1px solid var(--line);background:transparent;color:var(--ink);padding:9px 18px;border-radius:999px;font:700 12px "Barlow";cursor:pointer}
-@media(max-width:860px){.motionrow{grid-template-columns:1fr}}
+.mstep .t{font-family:var(--disp);font-weight:700;font-size:.84rem;color:var(--red);width:66px;flex-shrink:0;padding-top:3px}
+.mstep p{font-size:.9rem;color:var(--ink-2);line-height:1.55}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:9px 19px;border-radius:99px;
+     font:600 .8rem var(--body);cursor:pointer;transition:border-color .25s,color .25s}
+.btn:hover{border-color:var(--red);color:var(--red)}
+@media(max-width:860px){.mrow{grid-template-columns:1fr;gap:28px}}
 
-/* 08 IN USE */
-.usegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.usecard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
-.usecard .stage{height:170px;display:flex;align-items:center;justify-content:center;background:var(--blue);position:relative;overflow:hidden}
-.usecard .stage.paper{background:#fff}
-.usecard .cap{padding:11px 14px;font-size:12.5px;color:var(--sub);border-top:1px solid var(--line)}
-.tshirt{width:120px;height:140px;background:#fff;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 140'%3E%3Cpath d='M30 5 L45 15 L60 10 L75 15 L90 5 L118 28 L100 48 L90 40 L90 135 L30 135 L30 40 L20 48 L2 28 Z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 140'%3E%3Cpath d='M30 5 L45 15 L60 10 L75 15 L90 5 L118 28 L100 48 L90 40 L90 135 L30 135 L30 40 L20 48 L2 28 Z'/%3E%3C/svg%3E") center/contain no-repeat;display:flex;align-items:center;justify-content:center}
-.tshirt img{width:64px}
-.avatar-c{width:104px;height:104px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;overflow:hidden;border:3px solid var(--maize)}
-.avatar-c img{width:78px}
-.favicon-tab{background:#e7e7ea;border-radius:8px 8px 0 0;padding:10px 16px 0;display:flex;align-items:center;gap:8px;width:180px}
-.favicon-tab .chip{background:#fff;border-radius:6px 6px 0 0;padding:7px 10px;display:flex;align-items:center;gap:6px;font:12px Arial;color:#333}
-.favicon-tab .chip img{width:14px;height:14px}
-.signbox{width:150px;height:100px;background:#fff;border:6px solid var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center;padding:8px}
-@media(max-width:900px){.usegrid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.usegrid{grid-template-columns:1fr}}
+/* 08 in use */
+.uses{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.use{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.use .sq{height:176px;display:flex;align-items:center;justify-content:center;background:var(--blue)}
+.use .sq.paper{background:#fff}
+.use .cap{padding:12px 14px;font-size:.78rem;color:var(--muted);border-top:1px solid var(--line)}
+.tee{width:124px;height:144px;background:var(--blue);display:flex;align-items:center;justify-content:center;
+     -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 140'%3E%3Cpath d='M30 5 L45 15 L60 10 L75 15 L90 5 L118 28 L100 48 L90 40 L90 135 L30 135 L30 40 L20 48 L2 28 Z'/%3E%3C/svg%3E") center/contain no-repeat;
+     mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 140'%3E%3Cpath d='M30 5 L45 15 L60 10 L75 15 L90 5 L118 28 L100 48 L90 40 L90 135 L30 135 L30 40 L20 48 L2 28 Z'/%3E%3C/svg%3E") center/contain no-repeat}
+.tee img{width:62px}
+.avat{width:106px;height:106px;border-radius:50%;background:var(--blue);border:3px solid var(--maize);
+      display:flex;align-items:center;justify-content:center;overflow:hidden}
+.avat img{width:78px}
+.tab{background:#e8e8ec;border-radius:9px 9px 0 0;padding:11px 15px 0;width:186px}
+.tab .t{background:#fff;border-radius:7px 7px 0 0;padding:8px 11px;display:flex;align-items:center;gap:7px;
+        font:400 .74rem var(--body);color:#333}
+.tab .t img{width:15px;height:15px}
+.sign{width:152px;height:104px;background:#fff;border:6px solid var(--blue);border-radius:6px;
+      display:flex;align-items:center;justify-content:center;padding:9px}
+@media(max-width:900px){.uses{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.uses{grid-template-columns:1fr}}
 
-/* 09 RULES */
+/* 09 rules */
 .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.rule{border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;background:var(--panel)}
-.rule .demo{height:130px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb, var(--ink) 4%, var(--panel))}
-.rule .demo img{width:64%;transition:transform .4s ease,filter .4s ease}
-.rule:hover .demo img{filter:none}
-.rule .txt{padding:16px 18px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
+.rule{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.rule .demo{height:132px;display:flex;align-items:center;justify-content:center;
+            background:color-mix(in srgb,var(--ink) 4%,var(--card));overflow:hidden}
+.rule .demo img{width:62%;transition:transform .45s var(--ease),filter .45s var(--ease)}
+.rule .txt{padding:15px 17px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
 .rule .x{color:var(--red);font-weight:800;flex-shrink:0}
-.rule p{margin:0;font-size:13.5px;color:var(--sub);line-height:1.5}
-.r-rotate:hover img{transform:rotate(18deg)}
-.r-stretch:hover img{transform:scaleX(1.5)}
-.r-recolor .demo{background:#0b6b3a}
-.r-gradient .demo img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))}
-.r-gradient:hover .demo img{filter:drop-shadow(0 22px 10px rgba(0,0,0,.5)) saturate(1.4)}
-.r-field .demo{background:var(--red)}
-.r-outline:hover img{filter:drop-shadow(0 0 0 3px var(--maize)) drop-shadow(2px 0 0 var(--maize)) drop-shadow(-2px 0 0 var(--maize))}
+.rule p{font-size:.85rem;color:var(--ink-2);line-height:1.5}
+.r1:hover .demo img{transform:rotate(16deg)}
+.r2:hover .demo img{transform:scaleX(1.55)}
+.r3 .demo{background:#0b6b3a}
+.r4:hover .demo img{filter:drop-shadow(0 16px 12px rgba(0,0,0,.55)) saturate(1.5)}
+.r5 .demo{background:var(--red)}
+.r6:hover .demo img{filter:drop-shadow(2px 0 0 var(--maize)) drop-shadow(-2px 0 0 var(--maize)) drop-shadow(0 2px 0 var(--maize)) drop-shadow(0 -2px 0 var(--maize))}
 @media(max-width:860px){.rules{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.rules{grid-template-columns:1fr}}
+@media(max-width:540px){.rules{grid-template-columns:1fr}}
 
-/* 10 DOWNLOAD */
-.dl-groups{display:grid;gap:28px}
-.dl-group h4{font-family:"Barlow Condensed";font-weight:700;font-size:16px;margin:0 0 12px;color:var(--sub);letter-spacing:.03em;text-transform:uppercase}
-.dl-row{display:flex;align-items:center;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
-.dl-row .ic{width:40px;height:40px;border-radius:9px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font:700 11px "Barlow Condensed";flex-shrink:0}
-.dl-row .nm{font-weight:600;font-size:14.5px}
-.dl-row .dsc{color:var(--sub);font-size:12.5px}
-.dl-row .links{margin-left:auto;display:flex;gap:10px;flex-shrink:0}
-.dl-row a{color:var(--ink);text-decoration:none;font:700 12px "Barlow";border:1px solid var(--line);padding:7px 13px;border-radius:8px;transition:.15s}
-.dl-row a:hover{border-color:var(--red);color:var(--red)}
+/* 10 download */
+.dl h4{font-family:var(--disp);font-weight:700;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;
+       color:var(--muted);margin:0 0 10px}
+.dl .grp+.grp{margin-top:30px}
+.row{display:flex;align-items:center;gap:15px;padding:15px 0;border-top:1px solid var(--line)}
+.row .ic{width:42px;height:42px;border-radius:10px;background:var(--blue);color:#fff;flex-shrink:0;
+         display:flex;align-items:center;justify-content:center;font:italic 800 .82rem var(--disp)}
+.row .nm{font-weight:600;font-size:.95rem}
+.row .ds{font-size:.78rem;color:var(--muted)}
+.row .lk{margin-left:auto;display:flex;gap:9px;flex-shrink:0}
+.row .lk a{border:1px solid var(--line);padding:7px 13px;border-radius:8px;font-size:.74rem;font-weight:700;
+           transition:border-color .2s,color .2s}
+.row .lk a:hover{border-color:var(--red);color:var(--red)}
 
-footer{padding:50px 0 70px;text-align:center;color:var(--sub);font-size:12.5px;border-top:1px solid var(--line)}
-footer a{color:var(--ink)}
+footer{padding:52px 0 74px;text-align:center;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line)}
+footer a{color:var(--ink);border-bottom:1px solid var(--line)}
+
+
+/* inline mark: switch to the on-dark lockup colours when the page is dark */
+.darkart #map path,.darkart #wordmark path,.darkart #tagline path,
+.darkart [data-part="map"] path,.darkart [data-part="wordmark"] path,.darkart [data-part="tagline"] path{fill:#fff;transition:fill .5s var(--ease)}
+/* specimen plates stay light so the full-colour art always reads */
+.scale-stage{background:#F4F2EC;border-radius:12px}
+.rule .demo{background:#F4F2EC}
+.rule.r3 .demo{background:#0b6b3a}
+.rule.r5 .demo{background:var(--red)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+                       transition-duration:.01ms!important}
+}
 </style>
 </head>
 <body>
 
-<nav class="top"><div class="wrap row">
-  <a class="brandmark" href="#top"><span class="sw"></span>DRIVE FOR 75</a>
-  <div class="navlinks">
-    <a href="#idea">Idea</a><a href="#construction">Construction</a><a href="#lockups">Lockups</a>
-    <a href="#colour">Colour</a><a href="#type">Type</a><a href="#scale">Scale</a><a href="#motion">Motion</a>
-    <a href="#inuse">In use</a><a href="#rules">Rules</a><a href="#download">Download</a>
-  </div>
-  <button class="themebtn" id="themeToggle"><span class="dot"></span><span id="themeLabel">Light</span></button>
-</div></nav>
+<div id="prog"></div>
+<div id="cur" aria-hidden="true"></div>
 
-<header class="hero" id="top">
-  <div class="wrap">
-    <p class="eyebrow">Brand identity guide · Michigan pilot</p>
-    <div class="mark"><img src="assets/svg/drive-for-75_full-color.svg" alt="Drive for 75 logo"></div>
-    <h1>The road is the message.</h1>
-    <p class="lede">Interstate 75 runs from Detroit to the tip of the Lower Peninsula and keeps going south through five more states. The mark is built from that road — three colors, one number, zero ambiguity about what it stands for.</p>
-    <p class="cred">A Grassroots MI Initiative — brand guide v1</p>
-    <div class="scrollcue">Scroll</div>
+<nav>
+  <div class="wrap in">
+    <a class="brand" href="#hero" data-hover><span class="chip"></span>DRIVE FOR 75</a>
+    <div class="links">
+      <a href="#idea">Idea</a><a href="#construction">Construction</a><a href="#lockups">Lockups</a>
+      <a href="#colour">Colour</a><a href="#type">Type</a><a href="#scale">Scale</a>
+      <a href="#motion">Motion</a><a href="#inuse">In use</a><a href="#rules">Rules</a><a href="#download">Download</a>
+    </div>
+    <button class="toggle" id="themeBtn" data-hover aria-label="Toggle colour theme">
+      <span class="knob"></span><span id="themeLabel">Light</span>
+    </button>
   </div>
-</header>
+</nav>
+
+<section id="hero">
+  <div class="lanes" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="hero-in">
+    <p class="eyebrow-h">Brand identity guide · Michigan pilot</p>
+    <div class="heroLogo" id="heroLogo"><svg viewBox="0.0 -38.4 1036.9 790.4" role="img" aria-label="Drive for 75 — A Grassroots MI Initiative">
+<g class="hs-map"><g id="map" transform="translate(280.29,-209.63) scale(0.57026)"><path d="M 1070.73 552.807 C 1070.15 548.482 1069.51 550.052 1071.22 547.15 C 1076.15 546.172 1080.63 543.998 1081.39 538.359 L 1079.12 536.634 C 1081.93 534.108 1080.33 534.799 1084.1 534.489 C 1086.96 536.205 1085.94 536.276 1088.64 536.356 C 1090.8 534.783 1092.32 532.79 1095.18 533.749 C 1115.12 540.418 1132.25 553.002 1152.65 559.675 C 1160.78 562.335 1168.41 564.989 1175.7 568.217 C 1177.45 569.37 1178.22 575.728 1178 578.343 C 1175.73 580.109 1177.03 579.447 1173.58 579.477 C 1178.25 584.628 1187.05 594.232 1185.28 601.779 C 1179.1 602.022 1175.73 596.514 1171.09 600.578 C 1171.89 605.401 1180.36 607.888 1182.49 615.473 C 1185.49 626.144 1188.67 651.643 1181.97 660.894 C 1174.29 660.039 1173.09 659.841 1171.24 669.018 C 1170.42 673.056 1168.78 674.94 1166.33 678.059 L 1168.97 678.134 C 1171.11 681.094 1170.58 679.459 1170.42 683.266 L 1168.94 684.757 C 1165.77 684.426 1167.22 685 1164.65 682.529 C 1162.43 687.1 1158.16 688.583 1154.26 692.688 C 1147.92 699.375 1145.69 704.151 1141.9 712.51 L 1142.9 713.149 C 1145 714.517 1148.63 716.863 1150.05 718.624 C 1155.68 725.613 1166.38 720.282 1170.8 714.406 C 1192.7 685.273 1189.99 683.041 1226.04 686.919 L 1237.47 733.34 C 1242.55 754.083 1249.67 775.886 1246.12 797.38 C 1245.04 803.908 1241.73 821.308 1235.02 823.048 C 1233.85 819.233 1234.72 813.735 1235.06 809.575 C 1229.79 807.447 1233.32 812.982 1226.49 807.042 C 1223.59 808.946 1224.91 807.786 1223.03 811.443 C 1224.17 816.533 1226.39 820.909 1225.8 825.404 C 1223.39 827.705 1224.78 826.956 1221.46 827.666 C 1222.87 833.543 1220.56 838.66 1215.04 841.505 L 1212.96 841.153 C 1210.86 837.62 1211.21 836.289 1212.2 832.132 L 1208.33 829.519 L 1207.45 830.082 C 1208.56 838.968 1206.33 859.26 1201.12 867.169 C 1199.82 869.145 1197.04 868.931 1195 869.003 C 1195.03 866.337 1195.42 864.085 1193.97 862.519 L 1192.62 865.218 C 1192.03 866.891 1191.3 869.496 1189.79 870.3 C 1183.78 873.509 1180.08 888.697 1177.27 896.592 C 1170.55 897.172 1161.66 897.075 1154.75 897.184 C 1155.94 893.657 1157.73 888.867 1156.3 885.452 C 1146.09 883.106 1121.4 885.09 1109.55 884.84 C 1066.92 883.942 1024.39 886.314 981.803 887.393 C 980.123 885.432 978.085 882.336 976.541 880.137 C 985.381 858.179 1001.64 841.807 1004.33 815.471 C 1006.9 790.258 1002.37 760.531 987.009 740.127 C 985.394 718.971 993.045 712.258 983.029 692.815 C 990.157 677.297 1002.1 665.447 999.196 652.205 C 998.789 650.348 998.99 651.006 1000.24 648.822 C 1002.67 647.852 1001.64 648.571 1003.36 646.718 L 999.981 646.037 C 996.647 644.298 996.253 643.424 995.776 639.711 C 996.21 638.182 996.804 636.225 998.12 635.34 C 1004.42 631.11 1003.8 619.788 1009.37 616.647 C 1012.36 617.131 1011.35 617.241 1014.2 616.72 C 1016.31 612.096 1017.45 610.513 1020.34 606.24 C 1016.55 604.644 1014.88 606.507 1012.07 603.474 L 1014.15 604.26 L 1012.9 602.363 C 1017.22 599.125 1018.99 597.339 1022.74 593.565 C 1026.59 589.272 1039.14 582.453 1044.11 581.513 C 1044.7 584.732 1038 595.265 1037.28 600.374 C 1036.59 605.247 1037.75 615.148 1043.04 616.564 C 1045.04 614.663 1046.78 613.296 1049.34 612.242 C 1053.21 602.794 1047.55 608.863 1047.23 600.262 L 1050.02 597.981 C 1049.75 590.373 1051.37 570.379 1060.43 568.975 L 1062.25 570.342 C 1064.56 577.694 1071.18 580.216 1075.97 575.237 C 1075.98 568.567 1070.31 567.645 1069.65 559.159 L 1065.97 560.457 C 1062.92 558.916 1063.98 560.039 1062.52 557.118 L 1063.62 554.519 C 1066.75 552.363 1066.98 552.692 1070.73 552.807 z" fill="#00274C"/><path d="M 762.806 432.85 C 775.162 433.985 796.416 428.517 807.392 423.388 C 812.99 420.773 818.725 407.221 830.747 406.55 C 832.255 406.466 833.06 405.658 834.066 404.798 C 832.85 402.786 833.023 403.823 833.31 401.734 C 835.091 400.96 836.868 400.174 838.639 399.376 C 845.668 380.154 875.049 370.425 894.162 371.875 C 898.529 372.206 904.653 374.259 908.957 375.603 C 896.514 381.17 892.353 381.803 879.826 385.677 C 867.628 399.192 864.88 398.61 855.686 414.942 C 857.259 416.504 857.995 417.336 859.386 419.064 C 857.804 418.816 856.226 418.534 854.656 418.218 L 853.644 417.478 L 853.48 412.738 C 848.84 412.664 845.86 416.628 844.003 420.734 L 845.13 423.617 C 847.984 424.104 850.142 423.001 852.952 422.05 C 854.089 429.976 847.454 435.063 843.753 443.991 C 860.024 432.444 881.975 411.864 899.397 436.889 C 902.244 440.977 904.089 446.584 906.535 451.026 C 929.467 450.386 925.586 452.24 936.316 470.619 C 957.847 476.136 962.398 480.219 970.586 464.917 C 970.958 464.222 981.738 464.069 983.604 459.709 C 989.91 453.865 1010.92 453.265 1019.23 453.948 C 1021.36 454.127 1023.48 454.335 1025.61 454.572 C 1034.28 448.478 1065.82 439.119 1073.73 446.223 L 1073.62 448.29 C 1071.98 449.21 1067.1 450.902 1066.9 452.256 C 1066.24 456.675 1069.32 469.642 1074.96 469.729 C 1088.48 469.938 1104.3 460.119 1117.45 462.039 C 1119.63 464.882 1119.05 463.294 1119.03 467.038 C 1117.26 469.584 1118.43 468.537 1114.94 469.665 C 1115.96 470.859 1116.63 471.685 1117.61 472.957 L 1116.04 477.159 L 1112.13 478.571 L 1111.64 480.07 C 1113.91 481.145 1113.73 481.122 1116.24 480.903 C 1116.05 482.403 1116.38 481.713 1114.98 482.82 C 1117.49 493.892 1115.26 497.138 1125.89 501.554 L 1126.91 503.492 C 1126.38 505.14 1125.93 506.626 1125.47 508.296 L 1127.74 511.623 L 1126.85 512.858 C 1117.44 513.375 1095.2 508.821 1086.03 506.003 C 1082.53 508.614 1081.44 508.437 1080.42 511.737 C 1083.13 517.402 1084.68 516.026 1087.69 523.134 C 1085.05 522.716 1082.46 522.019 1079.93 522.634 C 1061.93 526.451 1064.81 504.579 1046.31 502.229 C 1045.5 504.288 1045.53 504.223 1045.04 506.3 C 1036.22 508.951 1018.57 505.984 1007.53 510.551 C 996.962 514.924 996.938 523.28 989.212 525.981 L 987.744 524.845 C 987.135 517.909 991.961 514.644 996.844 510.581 C 992.662 511.754 988.924 512.848 984.645 513.695 L 982.105 511.805 C 971.12 513.641 967.503 537.551 962.463 541.404 C 959.561 541.792 958.225 542.306 955.676 540.927 C 954.052 534.925 960.953 530.837 962.44 524.944 L 961.181 523.82 C 953.657 524.702 952.11 528.234 943.622 530.807 C 942.681 535.344 942.76 536.862 938.18 538.41 L 936.556 537.349 L 936.487 535.111 C 938.184 532.022 940.017 531.711 943.31 530.303 C 942.953 526.713 943.564 525.973 941.608 523.954 C 937.013 528.478 932.134 532.055 932.825 539.032 C 934.091 551.794 929.471 548.517 923.863 552.317 C 921.057 559.448 907.537 586.799 902.351 589.739 C 896.889 588.362 893.1 583.88 890.01 579.941 C 888.585 578.123 892.392 565.199 893.486 563.394 C 896.549 558.339 900.641 557.163 901.277 549.488 L 900.057 547.395 L 898.352 547.766 L 898.98 550.848 L 896.781 550.187 L 898.056 549.364 C 895.149 549.349 896.293 549.914 894.33 548.164 C 891.904 548.847 892.056 548.909 889.589 548.533 C 889.004 545.87 889.458 546.386 891.341 543.239 C 890.006 540.625 889.772 539.215 888.958 536.408 C 886.487 540.031 882.355 543.115 878.184 544.237 C 874.795 543.201 876.086 544.207 874.303 540.97 C 874.354 537.863 873.878 533.876 875.019 531.472 L 878.747 533.758 L 879.995 533.195 L 879.329 529.879 L 877.796 529.994 C 878.261 528.227 879.998 525.364 880.932 523.712 C 880.966 519.412 881.73 521.027 879.602 518.283 C 875.605 517.546 875.137 518.011 871.163 519.558 L 869.912 517.621 C 868.058 515.176 867.995 515.216 865.527 513.335 L 864.035 513.668 C 863.129 517.228 863.1 517.642 861.409 521.062 C 858.153 522.65 859.886 522.323 855.966 521.594 C 855.161 518.148 857.426 514.863 857.975 509.342 C 856.609 506.485 857.658 507.219 855.278 506.37 C 848.319 515.219 837.745 508.94 828.59 505.313 C 811.788 498.656 792.297 495.669 778.093 484.684 L 776.415 484.673 C 763.878 484.482 753.729 480.572 741.208 478.649 C 738.42 455.428 724.673 458.31 723.597 447.661 C 726.08 445.301 734.562 445.505 740.068 443.549 C 748.992 440.377 754.604 437.655 762.806 432.85 z" fill="#00274C"/></g></g>
+<circle class="hs-ring" cx="958.43" cy="264.2" r="21"/><path class="hs-star" id="star" d="M958.43 242.55 L963.61 256.41 L978.40 257.06 L966.81 266.28 L970.77 280.54 L958.43 272.37 L946.08 280.54 L950.04 266.28 L938.45 257.06 L953.24 256.41 Z" fill="#B31942" stroke="#FFFFFF" stroke-width="5" stroke-linejoin="round"/>
+<g id="stripes"><path class="hs-stripe" d="M332.8 492.0 L618.9 492.0 L599.1 530.7 L349.5 530.7 L349.4 529.1 L349.4 527.4 L349.3 525.8 L349.2 524.2 L349.0 522.6 L348.8 521.0 L348.5 519.4 L348.2 517.8 L347.9 516.2 L347.4 514.6 L346.9 512.9 L346.4 511.3 L345.8 509.7 L345.1 508.1 L344.4 506.5 L343.6 504.9 L342.7 503.3 L341.6 501.7 L340.5 500.1 L339.3 498.4 L337.9 496.8 L336.4 495.2 L334.7 493.6 L332.8 492.0 Z" fill="#FFCB05"/><path class="hs-stripe" d="M347.5 547.7 L590.5 547.7 L570.7 586.3 L329.3 586.3 L329.1 584.7 L328.8 583.1 L328.5 581.5 L328.3 579.9 L330.0 578.3 L331.7 576.7 L333.2 575.1 L334.6 573.4 L335.9 571.8 L337.2 570.2 L338.3 568.6 L339.4 567.0 L340.4 565.4 L341.3 563.8 L342.2 562.2 L343.0 560.6 L343.7 558.9 L344.4 557.3 L345.1 555.7 L345.6 554.1 L346.2 552.5 L346.7 550.9 L347.1 549.3 L347.5 547.7 Z" fill="#B31942"/><path class="hs-stripe" d="M332.1 603.3 L559.5 603.3 L544.9 642.0 L337.5 642.0 L337.7 640.4 L337.7 638.8 L337.5 637.2 L337.3 635.6 L337.0 633.9 L336.7 632.3 L336.5 630.7 L336.2 629.1 L336.0 627.5 L335.7 625.9 L335.4 624.3 L335.2 622.7 L334.9 621.1 L334.7 619.4 L334.4 617.8 L334.1 616.2 L333.9 614.6 L333.6 613.0 L333.4 611.4 L333.1 609.8 L332.8 608.2 L332.6 606.6 L332.3 604.9 L332.1 603.3 Z" fill="#FFCB05"/></g>
+<g id="wordmark"><path class="hs-drive" d="M43.42857142857143 467.42857142857144 61.21428571428571 322.57142857142856Q61.42857142857143 321.5 62.17857142857143 320.75Q62.92857142857143 320.0 64.0 320.0H103.64285714285714Q122.07142857142857 320.0 132.57142857142856 329.64285714285717Q143.07142857142856 339.28571428571433 143.07142857142856 356.0Q143.07142857142856 357.92857142857144 142.64285714285714 362.2142857142857L134.5 427.7857142857143Q132.14285714285714 446.85714285714283 118.75 458.42857142857144Q105.35714285714285 470.0 85.21428571428572 470.0H45.57142857142857Q44.5 470.0 43.85714285714286 469.25Q43.214285714285715 468.5 43.42857142857143 467.42857142857144ZM82.42857142857142 439.57142857142856 88.21428571428571 439.35714285714283Q92.71428571428571 439.14285714285717 96.14285714285714 435.39285714285717Q99.57142857142857 431.64285714285717 100.42857142857142 425.42857142857144L107.71428571428571 364.57142857142856Q107.92857142857143 363.5 107.92857142857143 361.57142857142856Q107.92857142857143 356.42857142857144 105.46428571428572 353.42857142857144Q103.0 350.42857142857144 98.92857142857142 350.42857142857144H93.35714285714286Q92.5 350.42857142857144 92.07142857142857 351.5L81.57142857142857 438.5Q81.14285714285714 439.57142857142856 82.42857142857142 439.57142857142856Z M200.85714285714283 467.85714285714283 193.78571428571428 411.07142857142856Q193.57142857142856 410.2142857142857 192.71428571428572 410.2142857142857H189.71428571428572Q188.85714285714286 410.2142857142857 188.42857142857142 411.2857142857143L181.57142857142856 467.42857142857144Q181.35714285714286 468.5 180.60714285714286 469.25Q179.85714285714286 470.0 178.78571428571428 470.0H149.21428571428572Q148.14285714285714 470.0 147.5 469.25Q146.85714285714286 468.5 147.07142857142856 467.42857142857144L164.85714285714286 322.57142857142856Q165.07142857142856 321.5 165.82142857142856 320.75Q166.57142857142856 320.0 167.64285714285714 320.0H212.42857142857142Q228.92857142857142 320.0 238.46428571428572 330.5Q248.0 341.0 248.0 358.57142857142856Q248.0 363.7142857142857 247.57142857142856 366.5Q246.07142857142856 378.5 240.60714285714283 388.0357142857143Q235.14285714285714 397.57142857142856 226.78571428571428 403.3571428571429Q226.35714285714283 403.57142857142856 226.1428571428571 403.8928571428571Q225.92857142857142 404.2142857142857 226.14285714285714 404.64285714285717L236.21428571428572 467.0V467.42857142857144Q236.21428571428572 470.0 233.85714285714283 470.0H203.42857142857142Q201.07142857142856 470.0 200.85714285714283 467.85714285714283ZM195.71428571428572 351.5 192.07142857142856 381.92857142857144Q192.07142857142856 383.0 192.92857142857142 383.0H198.71428571428572Q205.14285714285714 383.0 209.21428571428572 377.75Q213.28571428571428 372.5 213.28571428571428 363.2857142857143Q213.28571428571428 357.07142857142856 210.5 353.75Q207.71428571428572 350.42857142857144 202.78571428571428 350.42857142857144H197.0Q196.14285714285714 350.42857142857144 195.71428571428572 351.5Z M251.14285714285714 467.42857142857144 268.92857142857144 322.57142857142856Q269.14285714285717 321.5 269.89285714285717 320.75Q270.64285714285717 320.0 271.7142857142857 320.0H301.2857142857143Q302.3571428571429 320.0 303.0 320.75Q303.64285714285717 321.5 303.42857142857144 322.57142857142856L285.64285714285717 467.42857142857144Q285.42857142857144 468.5 284.67857142857144 469.25Q283.92857142857144 470.0 282.8571428571429 470.0H253.2857142857143Q252.21428571428572 470.0 251.57142857142858 469.25Q250.92857142857144 468.5 251.14285714285714 467.42857142857144Z M330.1428571428571 467.64285714285717 318.35714285714283 322.78571428571433Q318.35714285714283 320.0 320.9285714285714 320.0H353.07142857142856Q355.4285714285714 320.0 355.4285714285714 322.3571428571429L356.9285714285714 407.8571428571429Q356.9285714285714 408.7142857142857 357.46428571428567 408.6071428571429Q358.0 408.5 358.0 407.8571428571429L379.6428571428571 322.3571428571429Q380.2857142857143 320.0 382.6428571428571 320.0H413.9285714285714Q416.5 320.0 415.6428571428571 322.78571428571433L368.2857142857143 467.64285714285717Q367.6428571428571 470.0 365.2857142857143 470.0H332.5Q331.4285714285714 470.0 330.7857142857142 469.3571428571429Q330.1428571428571 468.7142857142857 330.1428571428571 467.64285714285717Z M504.71428571428567 350.42857142857144H462.9285714285714Q462.07142857142856 350.42857142857144 461.6428571428571 351.5L458.4285714285714 378.5Q458.4285714285714 379.57142857142856 459.2857142857143 379.57142857142856H482.21428571428567Q483.2857142857143 379.57142857142856 483.92857142857144 380.32142857142856Q484.57142857142856 381.07142857142856 484.35714285714283 382.14285714285717L481.1428571428571 407.64285714285717Q481.1428571428571 408.7142857142857 480.2857142857142 409.4642857142857Q479.4285714285714 410.2142857142857 478.35714285714283 410.2142857142857H455.6428571428571Q454.7857142857143 410.2142857142857 454.35714285714283 411.2857142857143L451.1428571428571 438.5Q450.71428571428567 439.57142857142856 452.0 439.57142857142856H493.7857142857143Q494.85714285714283 439.57142857142856 495.5 440.32142857142856Q496.1428571428571 441.07142857142856 495.9285714285714 442.14285714285717L492.9285714285714 467.42857142857144Q492.71428571428567 468.5 491.85714285714283 469.25Q491.0 470.0 489.9285714285714 470.0H415.1428571428571Q414.07142857142856 470.0 413.42857142857144 469.25Q412.7857142857143 468.5 413.0 467.42857142857144L430.7857142857143 322.57142857142856Q431.0 321.5 431.75 320.75Q432.5 320.0 433.57142857142856 320.0H508.35714285714283Q510.71428571428567 320.0 510.71428571428567 322.57142857142856L507.5 347.8571428571429Q507.2857142857143 348.92857142857144 506.5357142857143 349.67857142857144Q505.7857142857143 350.42857142857144 504.71428571428567 350.42857142857144Z" fill="#00274C"/><path class="hs-for" d="M135.14285714285714 522.4285714285714H93.35714285714286Q92.5 522.4285714285714 92.07142857142857 523.5L88.85714285714286 550.5Q88.85714285714286 551.5714285714286 89.71428571428571 551.5714285714286H112.64285714285714Q113.71428571428571 551.5714285714286 114.35714285714286 552.3214285714286Q115.0 553.0714285714286 114.78571428571428 554.1428571428571L111.57142857142857 579.6428571428571Q111.57142857142857 580.7142857142857 110.71428571428571 581.4642857142857Q109.85714285714285 582.2142857142857 108.78571428571428 582.2142857142857H86.07142857142857Q85.21428571428572 582.2142857142857 84.78571428571428 583.2857142857143L77.92857142857142 639.4285714285714Q77.71428571428572 640.5 76.96428571428572 641.25Q76.21428571428572 642.0 75.14285714285714 642.0H45.57142857142857Q44.5 642.0 43.85714285714286 641.25Q43.214285714285715 640.5 43.42857142857143 639.4285714285714L61.21428571428571 494.57142857142856Q61.42857142857143 493.5 62.17857142857143 492.75Q62.92857142857143 492.0 64.0 492.0H138.78571428571428Q141.14285714285714 492.0 141.14285714285714 494.57142857142856L137.92857142857142 519.8571428571429Q137.71428571428572 520.9285714285714 136.96428571428572 521.6785714285714Q136.21428571428572 522.4285714285714 135.14285714285714 522.4285714285714Z M138.92857142857144 606.4285714285714Q138.92857142857144 604.0714285714286 139.35714285714286 599.3571428571429L147.2857142857143 534.6428571428571Q149.85714285714286 514.2857142857143 163.25 502.28571428571433Q176.64285714285714 490.28571428571433 196.78571428571428 490.28571428571433Q215.0 490.28571428571433 225.60714285714286 500.3571428571429Q236.21428571428572 510.42857142857144 236.21428571428572 527.7857142857143Q236.21428571428572 529.9285714285714 235.78571428571428 534.6428571428571L227.64285714285714 599.3571428571429Q225.28571428571428 619.7142857142857 211.67857142857142 631.7142857142857Q198.07142857142856 643.7142857142857 177.92857142857144 643.7142857142857Q159.71428571428572 643.7142857142857 149.32142857142858 633.75Q138.92857142857144 623.7857142857143 138.92857142857144 606.4285714285714ZM193.14285714285714 600.8571428571429 201.28571428571428 533.1428571428571Q201.5 532.0714285714286 201.5 530.3571428571429Q201.5 525.8571428571429 199.35714285714286 523.2857142857143Q197.21428571428572 520.7142857142858 193.14285714285714 520.7142857142858Q188.64285714285714 520.7142857142858 185.64285714285714 524.1428571428571Q182.64285714285714 527.5714285714286 182.0 533.1428571428571L173.64285714285714 600.8571428571429L173.42857142857144 603.2142857142857Q173.42857142857144 607.9285714285714 175.57142857142858 610.6071428571429Q177.71428571428572 613.2857142857143 181.78571428571428 613.2857142857143Q186.28571428571428 613.2857142857143 189.28571428571428 609.9642857142858Q192.28571428571428 606.6428571428571 193.14285714285714 600.8571428571429Z M293.35714285714283 639.8571428571429 286.2857142857143 583.0714285714286Q286.07142857142856 582.2142857142857 285.2142857142857 582.2142857142857H282.2142857142857Q281.35714285714283 582.2142857142857 280.92857142857144 583.2857142857143L274.07142857142856 639.4285714285714Q273.85714285714283 640.5 273.10714285714283 641.25Q272.35714285714283 642.0 271.2857142857143 642.0H241.71428571428572Q240.64285714285714 642.0 240.0 641.25Q239.35714285714286 640.5 239.57142857142856 639.4285714285714L257.35714285714283 494.57142857142856Q257.57142857142856 493.5 258.32142857142856 492.75Q259.07142857142856 492.0 260.1428571428571 492.0H304.92857142857144Q321.42857142857144 492.0 330.9642857142857 502.5Q340.5 513.0 340.5 530.5714285714286Q340.5 535.7142857142858 340.07142857142856 538.5Q338.57142857142856 550.5 333.10714285714283 560.0357142857142Q327.6428571428571 569.5714285714286 319.2857142857143 575.3571428571429Q318.85714285714283 575.5714285714286 318.6428571428571 575.8928571428571Q318.42857142857144 576.2142857142858 318.6428571428571 576.6428571428571L328.7142857142857 639.0V639.4285714285714Q328.7142857142857 642.0 326.35714285714283 642.0H295.92857142857144Q293.57142857142856 642.0 293.35714285714283 639.8571428571429ZM288.2142857142857 523.5 284.57142857142856 553.9285714285714Q284.57142857142856 555.0 285.42857142857144 555.0H291.2142857142857Q297.6428571428571 555.0 301.71428571428567 549.75Q305.7857142857143 544.5 305.7857142857143 535.2857142857143Q305.7857142857143 529.0714285714286 303.0 525.75Q300.2142857142857 522.4285714285714 295.2857142857143 522.4285714285714H289.5Q288.6428571428571 522.4285714285714 288.2142857142857 523.5Z" fill="#00274C"/></g>
+<path class="hs-num" id="numeral" d="M560.8657142857143 637.86 561.7857142857142 634.18 682.7657142857142 397.28Q684.1457142857142 394.06 681.3857142857142 394.06H623.4257142857142Q621.1257142857143 394.06 620.2057142857142 396.82L617.9057142857142 417.06Q617.4457142857142 420.28 615.3757142857141 422.12Q613.3057142857142 423.96 610.0857142857142 423.96H555.8057142857142Q552.5857142857142 423.96 550.9757142857143 422.12Q549.3657142857143 420.28 549.8257142857142 417.06L561.3257142857142 326.9Q562.7057142857142 320.0 569.1457142857142 320.0H775.2257142857143Q778.4457142857143 320.0 780.0557142857142 321.84000000000003Q781.6657142857142 323.68 781.2057142857143 326.9L773.3857142857142 389.46Q772.9257142857142 391.76 772.0057142857142 394.28999999999996Q771.0857142857142 396.82 770.6257142857143 398.2L649.6457142857142 636.48Q646.8857142857142 642.0 640.9057142857142 642.0H565.9257142857142Q560.8657142857143 642.0 560.8657142857143 637.86Z M992.7857142857142 521.94Q992.7857142857142 526.08 991.8657142857141 536.2Q988.6457142857142 561.04 977.1457142857142 581.74Q961.5057142857142 610.26 931.3757142857143 627.51Q901.2457142857143 644.76 864.9057142857142 644.76Q829.0257142857142 644.76 803.2657142857142 627.97Q777.5057142857142 611.18 768.3057142857142 581.74Q764.1657142857142 567.94 764.1657142857142 553.22Q764.1657142857142 545.86 771.5257142857142 545.86H844.6657142857142Q847.8857142857141 545.86 849.0357142857142 547.24Q850.1857142857142 548.62 851.1057142857142 551.84L853.4057142857142 557.8199999999999Q859.3857142857141 570.7 873.1857142857142 570.7Q887.9057142857142 570.7 897.5657142857142 558.28Q906.7657142857142 546.78 906.7657142857142 530.68Q906.7657142857142 522.86 903.5457142857142 516.42Q900.7857142857142 510.9 895.4957142857143 507.45Q890.2057142857142 504.0 883.7657142857142 504.0Q876.4057142857142 504.0 868.5857142857142 507.90999999999997Q860.7657142857142 511.82 857.0857142857142 517.34Q853.8657142857141 522.86 849.2657142857142 522.86H774.7457142857141Q771.5257142857142 522.86 769.9157142857142 521.02Q768.3057142857142 519.18 768.7657142857142 515.96L792.2257142857142 326.9Q792.6857142857142 323.68 794.5257142857142 321.84000000000003Q796.3657142857141 320.0 799.5857142857142 320.0H1001.9857142857143Q1004.7457142857143 320.0 1006.3557142857143 321.84000000000003Q1007.9657142857143 323.68 1007.5057142857142 326.9L1000.1457142857142 387.15999999999997Q999.6857142857142 390.38 997.8457142857142 392.22Q996.0057142857142 394.06 992.7857142857142 394.06H870.4257142857142Q867.6657142857142 394.06 867.6657142857142 396.82L862.6057142857142 436.84000000000003Q862.1457142857142 438.22 863.0657142857142 438.68Q863.9857142857142 439.14 865.3657142857141 438.67999999999995Q883.3057142857142 429.48 904.0057142857142 429.48Q935.2857142857142 429.48 957.8257142857142 446.27Q980.3657142857141 463.06 988.6457142857142 491.58Q992.7857142857142 505.38 992.7857142857142 521.94Z" fill="#B31942"/>
+<g class="hs-tag"><g id="tagline" transform="translate(86.95,0) scale(1.0000,1)"><path d="M23.945714285714285 711.5142857142857 22.48857142857143 706.7542857142857Q22.39142857142857 706.56 22.245714285714286 706.56H10.297142857142857Q10.151428571428571 706.56 10.054285714285713 706.7542857142857L8.645714285714286 711.5142857142857Q8.5 712.0 8.014285714285714 712.0H1.8457142857142856Q1.5542857142857143 712.0 1.4085714285714286 711.8299999999999Q1.262857142857143 711.66 1.3599999999999999 711.32L11.85142857142857 678.4857142857143Q11.997142857142856 678.0 12.482857142857142 678.0H20.108571428571427Q20.594285714285714 678.0 20.74 678.4857142857143L31.23142857142857 711.32Q31.28 711.4171428571428 31.28 711.5628571428572Q31.28 712.0 30.745714285714286 712.0H24.577142857142857Q24.091428571428573 712.0 23.945714285714285 711.5142857142857ZM11.997142857142856 701.2657142857142H20.545714285714286Q20.837142857142858 701.2657142857142 20.74 700.9742857142858L16.36857142857143 686.5485714285714Q16.32 686.3542857142858 16.222857142857144 686.3785714285714Q16.125714285714285 686.4028571428571 16.077142857142857 686.5485714285714L11.802857142857142 700.9742857142858Q11.754285714285714 701.2657142857142 11.997142857142856 701.2657142857142Z  M62.58857142857143 700.44V689.56Q62.58857142857143 686.0142857142857 64.16714285714286 683.2942857142857Q65.74571428571429 680.5742857142857 68.61142857142858 679.0928571428572Q71.47714285714287 677.6114285714285 75.21714285714286 677.6114285714285Q78.90857142857143 677.6114285714285 81.75 679.0685714285714Q84.59142857142857 680.5257142857142 86.17 683.0271428571428Q87.74857142857144 685.5285714285715 87.74857142857144 688.5885714285714V688.9285714285714Q87.74857142857144 689.1714285714286 87.57857142857144 689.3414285714287Q87.40857142857143 689.5114285714286 87.16571428571429 689.5114285714286H81.48285714285714Q81.24000000000001 689.5114285714286 81.07000000000001 689.3414285714287Q80.9 689.1714285714286 80.9 688.9285714285714V688.7828571428571Q80.9 686.5485714285714 79.34571428571428 685.0185714285715Q77.79142857142857 683.4885714285714 75.21714285714286 683.4885714285714Q72.59428571428572 683.4885714285714 71.0157142857143 685.1157142857143Q69.43714285714286 686.7428571428571 69.43714285714286 689.3657142857143V700.6342857142857Q69.43714285714286 703.2571428571429 71.13714285714286 704.8842857142857Q72.83714285714287 706.5114285714286 75.46000000000001 706.5114285714286Q77.9857142857143 706.5114285714286 79.49142857142857 705.1757142857143Q80.99714285714286 703.84 80.99714285714286 701.46V699.2742857142857Q80.99714285714286 699.0314285714286 80.75428571428571 699.0314285714286H75.31428571428572Q75.07142857142857 699.0314285714286 74.90142857142857 698.8614285714286Q74.73142857142858 698.6914285714286 74.73142857142858 698.4485714285714V693.98Q74.73142857142858 693.7371428571429 74.90142857142857 693.5671428571429Q75.07142857142857 693.3971428571429 75.31428571428572 693.3971428571429H87.16571428571429Q87.40857142857143 693.3971428571429 87.57857142857144 693.5671428571429Q87.74857142857144 693.7371428571429 87.74857142857144 693.98V700.3914285714286Q87.74857142857144 704.0828571428572 86.19428571428571 706.8028571428572Q84.64 709.5228571428571 81.79857142857142 710.9557142857143Q78.95714285714286 712.3885714285715 75.21714285714286 712.3885714285715Q71.47714285714287 712.3885714285715 68.61142857142858 710.8828571428571Q65.74571428571429 709.3771428571429 64.16714285714286 706.6814285714286Q62.58857142857143 703.9857142857143 62.58857142857143 700.44Z M119.96571428571428 711.5628571428572 113.89428571428572 698.1085714285714Q113.79714285714286 697.9142857142857 113.60285714285715 697.9142857142857H109.08571428571429Q108.84285714285716 697.9142857142857 108.84285714285716 698.1571428571428V711.4171428571428Q108.84285714285716 711.66 108.67285714285715 711.8299999999999Q108.50285714285715 712.0 108.26 712.0H102.57714285714286Q102.33428571428573 712.0 102.16428571428573 711.8299999999999Q101.99428571428572 711.66 101.99428571428572 711.4171428571428V678.5828571428572Q101.99428571428572 678.34 102.16428571428573 678.1700000000001Q102.33428571428573 678.0 102.57714285714286 678.0H116.46857142857144Q119.57714285714286 678.0 121.93285714285715 679.2628571428571Q124.28857142857143 680.5257142857142 125.5757142857143 682.8571428571429Q126.86285714285715 685.1885714285714 126.86285714285715 688.2485714285714Q126.86285714285715 691.5514285714286 125.21142857142857 693.9071428571428Q123.56 696.2628571428571 120.59714285714287 697.2342857142858Q120.35428571428572 697.3314285714285 120.45142857142858 697.5742857142857L127.05714285714286 711.32Q127.15428571428572 711.5142857142857 127.15428571428572 711.6114285714285Q127.15428571428572 712.0 126.62 712.0H120.64571428571429Q120.16000000000001 712.0 119.96571428571428 711.5628571428572ZM108.84285714285716 684.12V692.4257142857143Q108.84285714285716 692.6685714285715 109.08571428571429 692.6685714285715H115.44857142857143Q117.48857142857143 692.6685714285715 118.77571428571429 691.4542857142858Q120.06285714285715 690.24 120.06285714285715 688.2971428571428Q120.06285714285715 686.3542857142858 118.77571428571429 685.1157142857144Q117.48857142857143 683.8771428571429 115.44857142857143 683.8771428571429H109.08571428571429Q108.84285714285716 683.8771428571429 108.84285714285716 684.12Z M161.79999999999998 711.5142857142857 160.34285714285713 706.7542857142857Q160.24571428571429 706.56 160.1 706.56H148.15142857142857Q148.00571428571428 706.56 147.90857142857143 706.7542857142857L146.5 711.5142857142857Q146.3542857142857 712.0 145.8685714285714 712.0H139.7Q139.40857142857143 712.0 139.26285714285714 711.8299999999999Q139.11714285714285 711.66 139.21428571428572 711.32L149.7057142857143 678.4857142857143Q149.85142857142856 678.0 150.33714285714285 678.0H157.96285714285713Q158.44857142857143 678.0 158.59428571428572 678.4857142857143L169.0857142857143 711.32Q169.1342857142857 711.4171428571428 169.1342857142857 711.5628571428572Q169.1342857142857 712.0 168.6 712.0H162.43142857142857Q161.94571428571427 712.0 161.79999999999998 711.5142857142857ZM149.85142857142856 701.2657142857142H158.4Q158.69142857142856 701.2657142857142 158.59428571428572 700.9742857142858L154.22285714285715 686.5485714285714Q154.1742857142857 686.3542857142858 154.07714285714286 686.3785714285714Q153.98 686.4028571428571 153.93142857142857 686.5485714285714L149.65714285714284 700.9742857142858Q149.60857142857142 701.2657142857142 149.85142857142856 701.2657142857142Z M181.1942857142857 702.2371428571429V701.1685714285715Q181.1942857142857 700.9257142857143 181.3642857142857 700.7557142857142Q181.53428571428572 700.5857142857143 181.77714285714285 700.5857142857143H187.3142857142857Q187.55714285714285 700.5857142857143 187.72714285714284 700.7557142857142Q187.89714285714285 700.9257142857143 187.89714285714285 701.1685714285715V701.8971428571429Q187.89714285714285 703.84 189.6942857142857 705.1757142857143Q191.49142857142857 706.5114285714286 194.55142857142857 706.5114285714286Q197.12571428571428 706.5114285714286 198.38857142857142 705.4185714285715Q199.65142857142857 704.3257142857143 199.65142857142857 702.7228571428572Q199.65142857142857 701.5571428571428 198.8742857142857 700.7557142857142Q198.09714285714284 699.9542857142857 196.76142857142855 699.3471428571429Q195.42571428571426 698.74 192.51142857142855 697.6714285714286Q189.25714285714284 696.5542857142857 186.9985714285714 695.3885714285714Q184.73999999999998 694.2228571428572 183.20999999999998 692.2071428571428Q181.67999999999998 690.1914285714286 181.67999999999998 687.2285714285714Q181.67999999999998 684.3142857142857 183.18571428571425 682.1285714285714Q184.69142857142856 679.9428571428572 187.36285714285714 678.7771428571428Q190.03428571428572 677.6114285714285 193.53142857142856 677.6114285714285Q197.22285714285712 677.6114285714285 200.11285714285714 678.9228571428571Q203.00285714285712 680.2342857142858 204.63 682.59Q206.25714285714284 684.9457142857143 206.25714285714284 688.0542857142857V688.7828571428571Q206.25714285714284 689.0257142857142 206.08714285714285 689.1957142857143Q205.91714285714284 689.3657142857143 205.6742857142857 689.3657142857143H200.0885714285714Q199.84571428571428 689.3657142857143 199.67571428571426 689.1957142857143Q199.50571428571428 689.0257142857142 199.50571428571428 688.7828571428571V688.3942857142857Q199.50571428571428 686.3542857142858 197.82999999999998 684.9214285714286Q196.1542857142857 683.4885714285714 193.23999999999998 683.4885714285714Q190.95714285714286 683.4885714285714 189.67 684.46Q188.38285714285712 685.4314285714286 188.38285714285712 687.1314285714286Q188.38285714285712 688.3457142857143 189.13571428571427 689.1714285714286Q189.88857142857142 689.9971428571429 191.37 690.6528571428571Q192.85142857142856 691.3085714285714 195.95999999999998 692.4257142857143Q199.4085714285714 693.6885714285714 201.37571428571425 694.6600000000001Q203.34285714285713 695.6314285714286 204.92142857142858 697.55Q206.5 699.4685714285714 206.5 702.5285714285715Q206.5 707.0942857142857 203.14857142857142 709.7414285714285Q199.79714285714283 712.3885714285715 194.06571428571428 712.3885714285715Q190.17999999999998 712.3885714285715 187.26571428571427 711.1500000000001Q184.35142857142856 709.9114285714286 182.77285714285713 707.6042857142857Q181.1942857142857 705.2971428571428 181.1942857142857 702.2371428571429Z M219.09428571428572 702.2371428571429V701.1685714285715Q219.09428571428572 700.9257142857143 219.26428571428573 700.7557142857142Q219.43428571428572 700.5857142857143 219.67714285714285 700.5857142857143H225.21428571428572Q225.45714285714286 700.5857142857143 225.62714285714287 700.7557142857142Q225.79714285714286 700.9257142857143 225.79714285714286 701.1685714285715V701.8971428571429Q225.79714285714286 703.84 227.59428571428572 705.1757142857143Q229.39142857142858 706.5114285714286 232.45142857142855 706.5114285714286Q235.0257142857143 706.5114285714286 236.28857142857143 705.4185714285715Q237.55142857142857 704.3257142857143 237.55142857142857 702.7228571428572Q237.55142857142857 701.5571428571428 236.77428571428572 700.7557142857142Q235.99714285714285 699.9542857142857 234.66142857142856 699.3471428571429Q233.32571428571427 698.74 230.41142857142856 697.6714285714286Q227.15714285714284 696.5542857142857 224.89857142857142 695.3885714285714Q222.64 694.2228571428572 221.10999999999999 692.2071428571428Q219.57999999999998 690.1914285714286 219.57999999999998 687.2285714285714Q219.57999999999998 684.3142857142857 221.0857142857143 682.1285714285714Q222.59142857142857 679.9428571428572 225.26285714285714 678.7771428571428Q227.93428571428572 677.6114285714285 231.43142857142857 677.6114285714285Q235.12285714285713 677.6114285714285 238.01285714285711 678.9228571428571Q240.90285714285713 680.2342857142858 242.52999999999997 682.59Q244.15714285714284 684.9457142857143 244.15714285714284 688.0542857142857V688.7828571428571Q244.15714285714284 689.0257142857142 243.98714285714283 689.1957142857143Q243.81714285714284 689.3657142857143 243.5742857142857 689.3657142857143H237.98857142857142Q237.74571428571429 689.3657142857143 237.5757142857143 689.1957142857143Q237.40571428571428 689.0257142857142 237.40571428571428 688.7828571428571V688.3942857142857Q237.40571428571428 686.3542857142858 235.73 684.9214285714286Q234.0542857142857 683.4885714285714 231.14 683.4885714285714Q228.85714285714286 683.4885714285714 227.57 684.46Q226.28285714285713 685.4314285714286 226.28285714285713 687.1314285714286Q226.28285714285713 688.3457142857143 227.03571428571428 689.1714285714286Q227.78857142857143 689.9971428571429 229.26999999999998 690.6528571428571Q230.75142857142856 691.3085714285714 233.85999999999999 692.4257142857143Q237.3085714285714 693.6885714285714 239.2757142857143 694.6600000000001Q241.24285714285713 695.6314285714286 242.82142857142856 697.55Q244.4 699.4685714285714 244.4 702.5285714285715Q244.4 707.0942857142857 241.04857142857145 709.7414285714285Q237.69714285714286 712.3885714285715 231.96571428571428 712.3885714285715Q228.07999999999998 712.3885714285715 225.16571428571427 711.1500000000001Q222.25142857142856 709.9114285714286 220.67285714285714 707.6042857142857Q219.09428571428572 705.2971428571428 219.09428571428572 702.2371428571429Z M276.18 711.5628571428572 270.10857142857145 698.1085714285714Q270.01142857142855 697.9142857142857 269.81714285714287 697.9142857142857H265.3Q265.0571428571429 697.9142857142857 265.0571428571429 698.1571428571428V711.4171428571428Q265.0571428571429 711.66 264.88714285714286 711.8299999999999Q264.71714285714285 712.0 264.4742857142857 712.0H258.7914285714286Q258.54857142857145 712.0 258.37857142857143 711.8299999999999Q258.2085714285714 711.66 258.2085714285714 711.4171428571428V678.5828571428572Q258.2085714285714 678.34 258.37857142857143 678.1700000000001Q258.54857142857145 678.0 258.7914285714286 678.0H272.68285714285713Q275.7914285714286 678.0 278.14714285714285 679.2628571428571Q280.5028571428571 680.5257142857142 281.78999999999996 682.8571428571429Q283.07714285714286 685.1885714285714 283.07714285714286 688.2485714285714Q283.07714285714286 691.5514285714286 281.4257142857143 693.9071428571428Q279.7742857142857 696.2628571428571 276.81142857142856 697.2342857142858Q276.56857142857143 697.3314285714285 276.6657142857143 697.5742857142857L283.2714285714286 711.32Q283.36857142857144 711.5142857142857 283.36857142857144 711.6114285714285Q283.36857142857144 712.0 282.8342857142857 712.0H276.86Q276.3742857142857 712.0 276.18 711.5628571428572ZM265.0571428571429 684.12V692.4257142857143Q265.0571428571429 692.6685714285715 265.3 692.6685714285715H271.66285714285715Q273.70285714285717 692.6685714285715 274.99 691.4542857142858Q276.27714285714285 690.24 276.27714285714285 688.2971428571428Q276.27714285714285 686.3542857142858 274.99 685.1157142857144Q273.70285714285717 683.8771428571429 271.66285714285715 683.8771428571429H265.3Q265.0571428571429 683.8771428571429 265.0571428571429 684.12Z M296.3514285714286 700.1971428571428V689.8028571428572Q296.3514285714286 686.2085714285714 297.95428571428573 683.44Q299.5571428571429 680.6714285714286 302.44714285714286 679.1414285714286Q305.33714285714285 677.6114285714285 309.1257142857143 677.6114285714285Q312.96285714285716 677.6114285714285 315.85285714285715 679.1414285714286Q318.74285714285713 680.6714285714286 320.3457142857143 683.44Q321.9485714285714 686.2085714285714 321.9485714285714 689.8028571428572V700.1971428571428Q321.9485714285714 703.84 320.3457142857143 706.6571428571428Q318.74285714285713 709.4742857142858 315.85285714285715 711.0042857142857Q312.96285714285716 712.5342857142857 309.1257142857143 712.5342857142857Q305.33714285714285 712.5342857142857 302.44714285714286 710.98Q299.5571428571429 709.4257142857143 297.95428571428573 706.6328571428571Q296.3514285714286 703.84 296.3514285714286 700.1971428571428ZM315.1 700.44V689.7542857142857Q315.1 686.9371428571428 313.47285714285715 685.212857142857Q311.8457142857143 683.4885714285714 309.1257142857143 683.4885714285714Q306.45428571428573 683.4885714285714 304.82714285714286 685.212857142857Q303.2 686.9371428571428 303.2 689.7542857142857V700.44Q303.2 703.2571428571429 304.82714285714286 704.9571428571428Q306.45428571428573 706.6571428571428 309.1257142857143 706.6571428571428Q311.79714285714283 706.6571428571428 313.4485714285714 704.9571428571428Q315.1 703.2571428571429 315.1 700.44Z M335.51428571428573 700.1971428571428V689.8028571428572Q335.51428571428573 686.2085714285714 337.1171428571429 683.44Q338.72 680.6714285714286 341.61 679.1414285714286Q344.5 677.6114285714285 348.28857142857146 677.6114285714285Q352.1257142857143 677.6114285714285 355.0157142857143 679.1414285714286Q357.9057142857143 680.6714285714286 359.50857142857143 683.44Q361.1114285714286 686.2085714285714 361.1114285714286 689.8028571428572V700.1971428571428Q361.1114285714286 703.84 359.50857142857143 706.6571428571428Q357.9057142857143 709.4742857142858 355.0157142857143 711.0042857142857Q352.1257142857143 712.5342857142857 348.28857142857146 712.5342857142857Q344.5 712.5342857142857 341.61 710.98Q338.72 709.4257142857143 337.1171428571429 706.6328571428571Q335.51428571428573 703.84 335.51428571428573 700.1971428571428ZM354.2628571428572 700.44V689.7542857142857Q354.2628571428572 686.9371428571428 352.6357142857143 685.212857142857Q351.00857142857143 683.4885714285714 348.28857142857146 683.4885714285714Q345.6171428571429 683.4885714285714 343.99 685.212857142857Q342.36285714285714 686.9371428571428 342.36285714285714 689.7542857142857V700.44Q342.36285714285714 703.2571428571429 343.99 704.9571428571428Q345.6171428571429 706.6571428571428 348.28857142857146 706.6571428571428Q350.96000000000004 706.6571428571428 352.61142857142863 704.9571428571428Q354.2628571428572 703.2571428571429 354.2628571428572 700.44Z M399.40000000000003 678.5828571428572V683.3428571428572Q399.40000000000003 683.5857142857143 399.23 683.7557142857142Q399.06 683.9257142857143 398.81714285714287 683.9257142857143H390.12285714285713Q389.88 683.9257142857143 389.88 684.1685714285715V711.4171428571428Q389.88 711.66 389.71000000000004 711.8299999999999Q389.54 712.0 389.2971428571429 712.0H383.61428571428576Q383.37142857142857 712.0 383.20142857142855 711.8299999999999Q383.0314285714286 711.66 383.0314285714286 711.4171428571428V684.1685714285715Q383.0314285714286 683.9257142857143 382.78857142857146 683.9257142857143H374.33714285714285Q374.0942857142857 683.9257142857143 373.9242857142857 683.7557142857142Q373.75428571428574 683.5857142857143 373.75428571428574 683.3428571428572V678.5828571428572Q373.75428571428574 678.34 373.9242857142857 678.1700000000001Q374.0942857142857 678.0 374.33714285714285 678.0H398.81714285714287Q399.06 678.0 399.23 678.1700000000001Q399.40000000000003 678.34 399.40000000000003 678.5828571428572Z M411.5571428571429 702.2371428571429V701.1685714285715Q411.5571428571429 700.9257142857143 411.7271428571429 700.7557142857142Q411.89714285714285 700.5857142857143 412.14 700.5857142857143H417.6771428571429Q417.92 700.5857142857143 418.09000000000003 700.7557142857142Q418.26 700.9257142857143 418.26 701.1685714285715V701.8971428571429Q418.26 703.84 420.0571428571428 705.1757142857143Q421.8542857142857 706.5114285714286 424.9142857142857 706.5114285714286Q427.48857142857145 706.5114285714286 428.7514285714286 705.4185714285715Q430.01428571428573 704.3257142857143 430.01428571428573 702.7228571428572Q430.01428571428573 701.5571428571428 429.2371428571429 700.7557142857142Q428.46000000000004 699.9542857142857 427.12428571428575 699.3471428571429Q425.78857142857146 698.74 422.87428571428575 697.6714285714286Q419.62 696.5542857142857 417.3614285714286 695.3885714285714Q415.10285714285715 694.2228571428572 413.5728571428572 692.2071428571428Q412.04285714285714 690.1914285714286 412.04285714285714 687.2285714285714Q412.04285714285714 684.3142857142857 413.54857142857145 682.1285714285714Q415.0542857142857 679.9428571428572 417.7257142857143 678.7771428571428Q420.39714285714285 677.6114285714285 423.89428571428573 677.6114285714285Q427.5857142857143 677.6114285714285 430.4757142857143 678.9228571428571Q433.3657142857143 680.2342857142858 434.99285714285713 682.59Q436.62 684.9457142857143 436.62 688.0542857142857V688.7828571428571Q436.62 689.0257142857142 436.45000000000005 689.1957142857143Q436.28000000000003 689.3657142857143 436.03714285714284 689.3657142857143H430.4514285714286Q430.2085714285714 689.3657142857143 430.03857142857146 689.1957142857143Q429.86857142857144 689.0257142857142 429.86857142857144 688.7828571428571V688.3942857142857Q429.86857142857144 686.3542857142858 428.1928571428572 684.9214285714286Q426.51714285714286 683.4885714285714 423.60285714285715 683.4885714285714Q421.32 683.4885714285714 420.03285714285715 684.46Q418.7457142857143 685.4314285714286 418.7457142857143 687.1314285714286Q418.7457142857143 688.3457142857143 419.49857142857144 689.1714285714286Q420.25142857142856 689.9971428571429 421.73285714285714 690.6528571428571Q423.2142857142857 691.3085714285714 426.3228571428572 692.4257142857143Q429.7714285714286 693.6885714285714 431.73857142857145 694.6600000000001Q433.7057142857143 695.6314285714286 435.2842857142857 697.55Q436.86285714285714 699.4685714285714 436.86285714285714 702.5285714285715Q436.86285714285714 707.0942857142857 433.5114285714286 709.7414285714285Q430.16 712.3885714285715 424.42857142857144 712.3885714285715Q420.54285714285714 712.3885714285715 417.62857142857143 711.1500000000001Q414.7142857142857 709.9114285714286 413.1357142857143 707.6042857142857Q411.5571428571429 705.2971428571428 411.5571428571429 702.2371428571429Z  M491.92285714285714 678.0H497.60571428571427Q497.8485714285714 678.0 498.0185714285714 678.1700000000001Q498.18857142857144 678.34 498.18857142857144 678.5828571428572V711.4171428571428Q498.18857142857144 711.66 498.0185714285714 711.8299999999999Q497.8485714285714 712.0 497.60571428571427 712.0H491.92285714285714Q491.68 712.0 491.51 711.8299999999999Q491.34 711.66 491.34 711.4171428571428V689.9971428571429Q491.34 689.8028571428572 491.24285714285713 689.8028571428572Q491.1457142857143 689.8028571428572 491.04857142857145 689.9485714285714L485.9 698.0114285714286Q485.65714285714284 698.4 485.21999999999997 698.4H482.3542857142857Q481.91714285714284 698.4 481.6742857142857 698.0114285714286L476.5257142857143 689.9485714285714Q476.42857142857144 689.8028571428572 476.33142857142855 689.8271428571429Q476.2342857142857 689.8514285714285 476.2342857142857 690.0457142857143V711.4171428571428Q476.2342857142857 711.66 476.0642857142857 711.8299999999999Q475.89428571428573 712.0 475.6514285714286 712.0H469.9685714285714Q469.7257142857143 712.0 469.5557142857143 711.8299999999999Q469.3857142857143 711.66 469.3857142857143 711.4171428571428V678.5828571428572Q469.3857142857143 678.34 469.5557142857143 678.1700000000001Q469.7257142857143 678.0 469.9685714285714 678.0H475.6514285714286Q476.0885714285714 678.0 476.33142857142855 678.3885714285715L483.6171428571429 689.7057142857143Q483.7628571428571 689.9971428571429 483.9085714285714 689.7057142857143L491.24285714285713 678.3885714285715Q491.48571428571427 678.0 491.92285714285714 678.0Z M513.1142857142858 711.4171428571428V678.5828571428572Q513.1142857142858 678.34 513.2842857142857 678.1700000000001Q513.4542857142858 678.0 513.6971428571429 678.0H519.38Q519.6228571428571 678.0 519.7928571428572 678.1700000000001Q519.9628571428572 678.34 519.9628571428572 678.5828571428572V711.4171428571428Q519.9628571428572 711.66 519.7928571428572 711.8299999999999Q519.6228571428571 712.0 519.38 712.0H513.6971428571429Q513.4542857142858 712.0 513.2842857142857 711.8299999999999Q513.1142857142858 711.66 513.1142857142858 711.4171428571428Z  M553.6028571428571 711.4171428571428V678.5828571428572Q553.6028571428571 678.34 553.7728571428572 678.1700000000001Q553.9428571428572 678.0 554.1857142857143 678.0H559.8685714285714Q560.1114285714285 678.0 560.2814285714285 678.1700000000001Q560.4514285714286 678.34 560.4514285714286 678.5828571428572V711.4171428571428Q560.4514285714286 711.66 560.2814285714285 711.8299999999999Q560.1114285714285 712.0 559.8685714285714 712.0H554.1857142857143Q553.9428571428572 712.0 553.7728571428572 711.8299999999999Q553.6028571428571 711.66 553.6028571428571 711.4171428571428Z M595.4857142857143 678.0H601.1685714285715Q601.4114285714286 678.0 601.5814285714287 678.1700000000001Q601.7514285714286 678.34 601.7514285714286 678.5828571428572V711.4171428571428Q601.7514285714286 711.66 601.5814285714287 711.8299999999999Q601.4114285714286 712.0 601.1685714285715 712.0H595.68Q595.1942857142857 712.0 595.0 711.6114285714285L582.42 690.8228571428572Q582.3228571428572 690.6771428571428 582.2257142857143 690.7014285714286Q582.1285714285714 690.7257142857143 582.1285714285714 690.92L582.2257142857143 711.4171428571428Q582.2257142857143 711.66 582.0557142857142 711.8299999999999Q581.8857142857142 712.0 581.6428571428571 712.0H575.96Q575.7171428571429 712.0 575.547142857143 711.8299999999999Q575.3771428571429 711.66 575.3771428571429 711.4171428571428V678.5828571428572Q575.3771428571429 678.34 575.547142857143 678.1700000000001Q575.7171428571429 678.0 575.96 678.0H581.4485714285714Q581.9342857142857 678.0 582.1285714285714 678.3885714285715L594.66 699.08Q594.7571428571429 699.2257142857143 594.8542857142857 699.2014285714286Q594.9514285714286 699.1771428571428 594.9514285714286 698.9828571428571L594.9028571428571 678.5828571428572Q594.9028571428571 678.34 595.0728571428572 678.1700000000001Q595.2428571428571 678.0 595.4857142857143 678.0Z M616.6771428571428 711.4171428571428V678.5828571428572Q616.6771428571428 678.34 616.8471428571429 678.1700000000001Q617.0171428571429 678.0 617.26 678.0H622.9428571428571Q623.1857142857142 678.0 623.3557142857142 678.1700000000001Q623.5257142857142 678.34 623.5257142857142 678.5828571428572V711.4171428571428Q623.5257142857142 711.66 623.3557142857142 711.8299999999999Q623.1857142857142 712.0 622.9428571428571 712.0H617.26Q617.0171428571429 712.0 616.8471428571429 711.8299999999999Q616.6771428571428 711.66 616.6771428571428 711.4171428571428Z M662.4942857142856 678.5828571428572V683.3428571428572Q662.4942857142856 683.5857142857143 662.3242857142857 683.7557142857142Q662.1542857142857 683.9257142857143 661.9114285714286 683.9257142857143H653.2171428571428Q652.9742857142857 683.9257142857143 652.9742857142857 684.1685714285715V711.4171428571428Q652.9742857142857 711.66 652.8042857142857 711.8299999999999Q652.6342857142856 712.0 652.3914285714285 712.0H646.7085714285714Q646.4657142857143 712.0 646.2957142857142 711.8299999999999Q646.1257142857143 711.66 646.1257142857143 711.4171428571428V684.1685714285715Q646.1257142857143 683.9257142857143 645.8828571428571 683.9257142857143H637.4314285714286Q637.1885714285714 683.9257142857143 637.0185714285715 683.7557142857142Q636.8485714285714 683.5857142857143 636.8485714285714 683.3428571428572V678.5828571428572Q636.8485714285714 678.34 637.0185714285715 678.1700000000001Q637.1885714285714 678.0 637.4314285714286 678.0H661.9114285714286Q662.1542857142857 678.0 662.3242857142857 678.1700000000001Q662.4942857142856 678.34 662.4942857142856 678.5828571428572Z M675.8657142857143 711.4171428571428V678.5828571428572Q675.8657142857143 678.34 676.0357142857142 678.1700000000001Q676.2057142857143 678.0 676.4485714285714 678.0H682.1314285714285Q682.3742857142856 678.0 682.5442857142857 678.1700000000001Q682.7142857142857 678.34 682.7142857142857 678.5828571428572V711.4171428571428Q682.7142857142857 711.66 682.5442857142857 711.8299999999999Q682.3742857142856 712.0 682.1314285714285 712.0H676.4485714285714Q676.2057142857143 712.0 676.0357142857142 711.8299999999999Q675.8657142857143 711.66 675.8657142857143 711.4171428571428Z M718.6228571428571 711.5142857142857 717.1657142857142 706.7542857142857Q717.0685714285714 706.56 716.9228571428571 706.56H704.9742857142857Q704.8285714285714 706.56 704.7314285714285 706.7542857142857L703.3228571428571 711.5142857142857Q703.1771428571428 712.0 702.6914285714286 712.0H696.5228571428571Q696.2314285714285 712.0 696.0857142857142 711.8299999999999Q695.9399999999999 711.66 696.0371428571428 711.32L706.5285714285714 678.4857142857143Q706.6742857142857 678.0 707.16 678.0H714.7857142857142Q715.2714285714285 678.0 715.4171428571428 678.4857142857143L725.9085714285713 711.32Q725.9571428571428 711.4171428571428 725.9571428571428 711.5628571428572Q725.9571428571428 712.0 725.4228571428571 712.0H719.2542857142856Q718.7685714285714 712.0 718.6228571428571 711.5142857142857ZM706.6742857142857 701.2657142857142H715.2228571428572Q715.5142857142857 701.2657142857142 715.4171428571428 700.9742857142858L711.0457142857142 686.5485714285714Q710.9971428571429 686.3542857142858 710.9 686.3785714285714Q710.8028571428571 686.4028571428571 710.7542857142856 686.5485714285714L706.48 700.9742857142858Q706.4314285714286 701.2657142857142 706.6742857142857 701.2657142857142Z M763.2742857142856 678.5828571428572V683.3428571428572Q763.2742857142856 683.5857142857143 763.1042857142857 683.7557142857142Q762.9342857142857 683.9257142857143 762.6914285714286 683.9257142857143H753.9971428571428Q753.7542857142856 683.9257142857143 753.7542857142856 684.1685714285715V711.4171428571428Q753.7542857142856 711.66 753.5842857142857 711.8299999999999Q753.4142857142856 712.0 753.1714285714285 712.0H747.4885714285714Q747.2457142857143 712.0 747.0757142857142 711.8299999999999Q746.9057142857142 711.66 746.9057142857142 711.4171428571428V684.1685714285715Q746.9057142857142 683.9257142857143 746.6628571428571 683.9257142857143H738.2114285714285Q737.9685714285714 683.9257142857143 737.7985714285714 683.7557142857142Q737.6285714285714 683.5857142857143 737.6285714285714 683.3428571428572V678.5828571428572Q737.6285714285714 678.34 737.7985714285714 678.1700000000001Q737.9685714285714 678.0 738.2114285714285 678.0H762.6914285714286Q762.9342857142857 678.0 763.1042857142857 678.1700000000001Q763.2742857142856 678.34 763.2742857142856 678.5828571428572Z M776.6457142857142 711.4171428571428V678.5828571428572Q776.6457142857142 678.34 776.8157142857142 678.1700000000001Q776.9857142857143 678.0 777.2285714285714 678.0H782.9114285714285Q783.1542857142856 678.0 783.3242857142857 678.1700000000001Q783.4942857142856 678.34 783.4942857142856 678.5828571428572V711.4171428571428Q783.4942857142856 711.66 783.3242857142857 711.8299999999999Q783.1542857142856 712.0 782.9114285714285 712.0H777.2285714285714Q776.9857142857143 712.0 776.8157142857142 711.8299999999999Q776.6457142857142 711.66 776.6457142857142 711.4171428571428Z M806.8228571428571 711.5142857142857 796.8171428571428 678.68 796.7685714285714 678.4857142857143Q796.7685714285714 678.0 797.3028571428571 678.0H803.4228571428571Q803.9571428571428 678.0 804.102857142857 678.4857142857143L810.5628571428571 702.1885714285714Q810.6114285714285 702.3342857142857 810.7085714285713 702.3342857142857Q810.8057142857142 702.3342857142857 810.8542857142857 702.1885714285714L817.2171428571428 678.4857142857143Q817.3628571428571 678.0 817.8971428571429 678.0H823.8714285714285Q824.1628571428571 678.0 824.3085714285714 678.1942857142858Q824.4542857142857 678.3885714285715 824.3571428571428 678.68L814.2057142857142 711.5142857142857Q814.06 712.0 813.5742857142857 712.0H807.4542857142857Q806.9685714285714 712.0 806.8228571428571 711.5142857142857Z M860.6542857142856 683.8771428571429H844.722857142857Q844.4799999999999 683.8771428571429 844.4799999999999 684.12V691.6485714285715Q844.4799999999999 691.8914285714286 844.722857142857 691.8914285714286H855.1657142857142Q855.4085714285713 691.8914285714286 855.5785714285714 692.0614285714286Q855.7485714285714 692.2314285714285 855.7485714285714 692.4742857142858V697.1857142857143Q855.7485714285714 697.4285714285714 855.5785714285714 697.5985714285714Q855.4085714285713 697.7685714285715 855.1657142857142 697.7685714285715H844.722857142857Q844.4799999999999 697.7685714285715 844.4799999999999 698.0114285714286V705.88Q844.4799999999999 706.1228571428571 844.722857142857 706.1228571428571H860.6542857142856Q860.8971428571427 706.1228571428571 861.0671428571427 706.2928571428572Q861.2371428571428 706.4628571428572 861.2371428571428 706.7057142857143V711.4171428571428Q861.2371428571428 711.66 861.0671428571427 711.8299999999999Q860.8971428571427 712.0 860.6542857142856 712.0H838.2142857142857Q837.9714285714285 712.0 837.8014285714285 711.8299999999999Q837.6314285714285 711.66 837.6314285714285 711.4171428571428V678.5828571428572Q837.6314285714285 678.34 837.8014285714285 678.1700000000001Q837.9714285714285 678.0 838.2142857142857 678.0H860.6542857142856Q860.8971428571427 678.0 861.0671428571427 678.1700000000001Q861.2371428571428 678.34 861.2371428571428 678.5828571428572V683.2942857142857Q861.2371428571428 683.5371428571428 861.0671428571427 683.7071428571428Q860.8971428571427 683.8771428571429 860.6542857142856 683.8771428571429Z" fill="#00274C"/></g></g>
+</svg></div>
+    <h1><span>The</span> <span>road</span> <span>is</span> <span>the</span> <span>message.</span></h1>
+    <p class="lede">Interstate 75 runs from Detroit to the top of the Lower Peninsula and keeps going south through five more states. The mark is built from that road — three colours, one number, and no ambiguity about what it stands for.</p>
+    <p class="credit">A Grassroots MI Initiative — brand guide v1</p>
+  </div>
+  <div class="cue"><span>Scroll</span><i></i></div>
+</section>
 
 <section id="idea">
   <div class="wrap">
-    <p class="kicker reveal">01 · The idea</p>
-    <h2 class="h reveal">Four ideas, one number</h2>
-    <p class="dek reveal">75 means two things at once: the target — 75% participation — and Interstate 75, the highway that already connects Michigan's Muslim communities and points the way south, city by city.</p>
-    <div class="idea-grid reveal">
-      <div class="idea-card"><span class="n">01</span><h3>Michigan</h3><p>The pilot state. Every captain, every household, every mosque this year is inside this silhouette.</p><span class="tag" style="background:var(--blue)">The map</span></div>
-      <div class="idea-card"><span class="n">02</span><h3>Detroit</h3><p>Where the work starts. The star sits in the southeast corner of the Lower Peninsula, not the geographic center of the state.</p><span class="tag" style="background:var(--red)">The star</span></div>
-      <div class="idea-card"><span class="n">03</span><h3>Interstate 75</h3><p>The corridor south. Every future city — Toledo, Cincinnati, Atlanta — is another exit on the same road.</p><span class="tag" style="background:#a8860b">The stripes</span></div>
-      <div class="idea-card"><span class="n">04</span><h3>75%</h3><p>The goal. It is the biggest shape in the mark on purpose — nothing else in this logo is allowed to outweigh it.</p><span class="tag" style="background:#333">The numeral</span></div>
+    <p class="eyebrow rv">01 — The idea</p>
+    <h2 class="rv">Four ideas, one number</h2>
+    <p class="lead rv">75 means two things at once: the target — 75% participation — and Interstate 75, the highway that already connects Michigan's communities and points the way south, city by city.</p>
+    <div class="ideas stag">
+      <div class="idea" data-hover><span class="n">01</span><h3>Michigan</h3><p>The pilot state. Every captain, every household, every mosque this year sits inside this silhouette.</p><span class="k" style="background:var(--blue)">The map</span></div>
+      <div class="idea" data-hover><span class="n">02</span><h3>Detroit</h3><p>Where the work starts. The star sits in the southeast corner of the Lower Peninsula, not the middle of the state.</p><span class="k" style="background:var(--red)">The star</span></div>
+      <div class="idea" data-hover><span class="n">03</span><h3>Interstate 75</h3><p>The corridor south. Every future city — Toledo, Cincinnati, Atlanta — is another exit on the same road.</p><span class="k" style="background:#a8860b">The stripes</span></div>
+      <div class="idea" data-hover><span class="n">04</span><h3>75%</h3><p>The goal. It is the largest shape in the mark on purpose. Nothing else is allowed to outweigh it.</p><span class="k" style="background:#2b3a4d">The numeral</span></div>
     </div>
   </div>
 </section>
 
 <section id="construction">
   <div class="wrap">
-    <p class="kicker reveal">02 · Construction</p>
-    <h2 class="h reveal">Every part earns its place</h2>
-    <p class="dek reveal">Click a spec to see exactly what it controls. Nothing in this mark is decorative — the map, the star, the stripes and the numeral are all load-bearing.</p>
-    <div class="constr reveal">
-      <div class="stage"><div id="constrHolder" style="width:100%"></div></div>
-      <div class="speclist" id="specList">
-        <div class="spec" data-part="map"><b>Michigan map</b><span>Full state silhouette, both peninsulas, solid <code>#00274C</code>. No county lines, no lakes cut out — recognizable at a glance, nothing to lose at small sizes.</span></div>
-        <div class="spec" data-part="star"><b>Detroit star</b><span>Positioned at roughly <code>88.5%</code> across and <code>87%</code> down the map's bounding box — Metro Detroit, southeast corner. <code>#B31942</code> fill, thin white keyline so it reads on the dark map.</span></div>
-        <div class="spec" data-part="wordmark"><b>Wordmark</b><span>"DRIVE" and "FOR" stacked, heavy italic condensed caps, <code>#00274C</code>. Cap height sets the module every other element is measured against.</span></div>
-        <div class="spec" data-part="stripes"><b>Motion stripes</b><span>Three tapered bars — maize / red / maize — launched from the right edge of the R with a constant keyline gap, cut parallel to the diagonal of the 7. Top bar longest, none touch the numeral.</span></div>
-        <div class="spec" data-part="numeral"><b>75</b><span>Spans both wordmark lines, <code>#B31942</code>, heavy italic. It is the single largest shape in the mark — every other element is sized to stay secondary to it.</span></div>
-        <div class="spec" data-part="tagline"><b>Tagline</b><span>"A GRASSROOTS MI INITIATIVE" — <code>#00274C</code>, wide letterspacing, roughly a quarter the cap height of the wordmark. Establishes Grassroots MI as the parent without competing with the mark.</span></div>
+    <p class="eyebrow rv">02 — Construction</p>
+    <h2 class="rv">Every part earns its place</h2>
+    <p class="lead rv">Hover or tap a spec to isolate it in the mark. Nothing here is decorative — the map, the star, the stripes and the numeral are all load-bearing.</p>
+    <div class="build rv">
+      <div class="stage" id="buildStage"></div>
+      <div id="specs">
+        <div class="spec" data-part="map" data-hover><b>Michigan map</b><span>Full state silhouette, both peninsulas, solid <code>#00274C</code>. No county lines and no lake cut-outs — recognisable at a glance, nothing to lose at small sizes.</span></div>
+        <div class="spec" data-part="star" data-hover><b>Detroit star</b><span>Placed at roughly <code>88.5%</code> across and <code>87%</code> down the map's bounding box — Metro Detroit, southeast corner. <code>#B31942</code> with a thin white keyline so it holds against the blue.</span></div>
+        <div class="spec" data-part="wordmark" data-hover><b>Wordmark</b><span>DRIVE and FOR stacked in heavy italic condensed caps. Its cap height is the module every other element is measured against.</span></div>
+        <div class="spec" data-part="stripes" data-hover><b>Motion stripes</b><span>Three tapered bars — maize, red, maize — launched from the right edge of the R at one constant keyline gap, then cut parallel to the diagonal of the 7. The top bar is longest; none of them touch the numeral.</span></div>
+        <div class="spec" data-part="numeral" data-hover><b>The 75</b><span>Spans both wordmark lines in <code>#B31942</code>. It is the single largest shape in the mark, and everything else is sized to stay secondary to it.</span></div>
+        <div class="spec" data-part="tagline" data-hover><b>Tagline</b><span>A GRASSROOTS MI INITIATIVE, wide-tracked at roughly a quarter of the wordmark's cap height. It credits the parent organisation without competing with the mark.</span></div>
       </div>
     </div>
   </div>
@@ -260,85 +404,89 @@ footer a{color:var(--ink)}
 
 <section id="lockups">
   <div class="wrap">
-    <p class="kicker reveal">03 · Lockups</p>
-    <h2 class="h reveal">One mark, every background</h2>
-    <p class="dek reveal">Full color is the default. Reach for the reversed, one-color, or no-tagline version only when the situation calls for it — never redraw the mark to fit.</p>
-    <div class="lockups reveal">
-      <div class="lock-card"><div class="lock-swatch" style="background:#fff"><img src="assets/svg/drive-for-75_full-color.svg"></div><div class="lock-meta"><b>Full color</b><span>Light backgrounds — the default</span></div></div>
-      <div class="lock-card"><div class="lock-swatch" style="background:#00274C"><img src="assets/svg/drive-for-75_full-color-on-dark.svg"></div><div class="lock-meta"><b>Full color · on dark</b><span>Michigan Blue, black, photo backgrounds</span></div></div>
-      <div class="lock-card"><div class="lock-swatch" style="background:#fff"><img src="assets/svg/drive-for-75_black.svg"></div><div class="lock-meta"><b>One color · black</b><span>Engraving, faxes, single-color print</span></div></div>
-      <div class="lock-card"><div class="lock-swatch" style="background:#111"><img src="assets/svg/drive-for-75_white.svg"></div><div class="lock-meta"><b>One color · white</b><span>Reversed, screen print, vinyl</span></div></div>
-      <div class="lock-card"><div class="lock-swatch" style="background:#fff"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg"></div><div class="lock-meta"><b>No tagline</b><span>Favicon, avatars, embroidery</span></div></div>
-      <div class="lock-card"><div class="lock-swatch" style="background:#00274C"><img src="assets/svg/drive-for-75_full-color-on-dark_no-tagline.svg"></div><div class="lock-meta"><b>No tagline · on dark</b><span>Dashboard header, dark UI</span></div></div>
-      <div class="lock-card"><div class="lock-swatch" style="background:#fff"><img src="assets/svg/drive-for-75_black_no-tagline.svg"></div><div class="lock-meta"><b>Black · no tagline</b><span>Stamps, line art, laser etching</span></div></div>
-      <div class="lock-card"><div class="lock-swatch" style="background:#111"><img src="assets/svg/drive-for-75_white_no-tagline.svg"></div><div class="lock-meta"><b>White · no tagline</b><span>Yard signs, apparel on dark fabric</span></div></div>
+    <p class="eyebrow rv">03 — Lockups</p>
+    <h2 class="rv">One mark, every background</h2>
+    <p class="lead rv">Full colour is the default. Reach for a reversed, one-colour or no-tagline version only when the situation calls for it — never redraw the mark to fit.</p>
+    <div class="locks stag">
+      <div class="lock" data-hover><div class="sq" style="background:#fff"><img src="assets/svg/drive-for-75_full-color.svg" alt="Full colour lockup"></div><div class="mt"><b>Full colour</b><span>Light backgrounds — the default</span></div></div>
+      <div class="lock" data-hover><div class="sq" style="background:#00274C"><img src="assets/svg/drive-for-75_full-color-on-dark.svg" alt="Full colour on dark"></div><div class="mt"><b>Full colour · on dark</b><span>Michigan Blue, black, photography</span></div></div>
+      <div class="lock" data-hover><div class="sq" style="background:#fff"><img src="assets/svg/drive-for-75_black.svg" alt="Black lockup"></div><div class="mt"><b>One colour · black</b><span>Single-colour print, engraving</span></div></div>
+      <div class="lock" data-hover><div class="sq" style="background:#111"><img src="assets/svg/drive-for-75_white.svg" alt="White lockup"></div><div class="mt"><b>One colour · white</b><span>Reversed, screen print, vinyl</span></div></div>
+      <div class="lock" data-hover><div class="sq" style="background:#fff"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg" alt="Full colour without tagline"></div><div class="mt"><b>No tagline</b><span>Favicon, avatars, embroidery</span></div></div>
+      <div class="lock" data-hover><div class="sq" style="background:#00274C"><img src="assets/svg/drive-for-75_full-color-on-dark_no-tagline.svg" alt="On dark without tagline"></div><div class="mt"><b>No tagline · on dark</b><span>Dashboard header, dark UI</span></div></div>
+      <div class="lock" data-hover><div class="sq" style="background:#fff"><img src="assets/svg/drive-for-75_black_no-tagline.svg" alt="Black without tagline"></div><div class="mt"><b>Black · no tagline</b><span>Stamps, line art, etching</span></div></div>
+      <div class="lock" data-hover><div class="sq" style="background:#111"><img src="assets/svg/drive-for-75_white_no-tagline.svg" alt="White without tagline"></div><div class="mt"><b>White · no tagline</b><span>Yard signs, dark apparel</span></div></div>
     </div>
   </div>
 </section>
 
 <section id="colour">
   <div class="wrap">
-    <p class="kicker reveal">04 · Colour</p>
-    <h2 class="h reveal">Michigan and the flag, balanced</h2>
-    <p class="dek reveal">Blue leads, maize bridges, red marks the destination. Click a swatch to copy its hex.</p>
-    <div class="swatches reveal">
-      <div class="swatch" data-hex="#00274C" style="background:#00274C;color:#fff"><span class="copied">Copied</span><b>Michigan Blue</b><span>#00274C</span><small>PMS 282 · the map, the wordmark</small></div>
-      <div class="swatch" data-hex="#FFCB05" style="background:#FFCB05;color:#00274C"><span class="copied">Copied</span><b>Michigan Maize</b><span>#FFCB05</span><small>PMS 7406 · the stripes</small></div>
-      <div class="swatch" data-hex="#B31942" style="background:#B31942;color:#fff"><span class="copied">Copied</span><b>Old Glory Red</b><span>#B31942</span><small>US flag red · the 75, the star</small></div>
-      <div class="swatch" data-hex="#FFFFFF" style="background:#fff;color:#00274C;border:1px solid var(--line)"><span class="copied">Copied</span><b>White</b><span>#FFFFFF</span><small>Star keyline, reversed lockups</small></div>
+    <p class="eyebrow rv">04 — Colour</p>
+    <h2 class="rv">Michigan and the flag, balanced</h2>
+    <p class="lead rv">Blue leads, maize bridges, red marks the destination. Click any swatch to copy its hex.</p>
+    <div class="sws stag">
+      <div class="sw" data-hex="#00274C" data-hover style="background:#00274C;color:#fff"><span class="cp">Copied</span><b>Michigan Blue</b><span class="hex">#00274C</span><small>PMS 282 · map, wordmark</small></div>
+      <div class="sw" data-hex="#FFCB05" data-hover style="background:#FFCB05;color:#00274C"><span class="cp">Copied</span><b>Michigan Maize</b><span class="hex">#FFCB05</span><small>PMS 7406 · the stripes</small></div>
+      <div class="sw" data-hex="#B31942" data-hover style="background:#B31942;color:#fff"><span class="cp">Copied</span><b>Old Glory Red</b><span class="hex">#B31942</span><small>US flag red · the 75, the star</small></div>
+      <div class="sw" data-hex="#FFFFFF" data-hover style="background:#fff;color:#00274C;border-color:var(--line)"><span class="cp">Copied</span><b>White</b><span class="hex">#FFFFFF</span><small>Star keyline, reversed art</small></div>
     </div>
-    <div class="balance reveal">
-      <i style="background:#00274C;width:60%">BLUE 60%</i><i style="background:#FFCB05;color:#00274C;width:30%">MAIZE 30%</i><i style="background:#B31942;width:10%">RED 10%</i>
-    </div>
-    <p class="dek reveal" style="margin-bottom:0">Red is the last color the eye reaches, never the first — it never fills a field and never sets the wordmark. That order is what keeps the mark civic instead of partisan.</p>
-    <div class="avoid reveal">
-      <span class="avoidchip"><i style="background:linear-gradient(90deg,#dc2626,#2563eb)"></i>Red + blue with no maize between</span>
-      <span class="avoidchip"><i style="background:linear-gradient(135deg,#00274C,#FFCB05,#B31942)"></i>Gradients between brand colors</span>
-      <span class="avoidchip"><i style="background:linear-gradient(135deg,#999,#eee,#999)"></i>Metallics, chrome, glossy fills</span>
-      <span class="avoidchip"><i style="background:#7c3aed"></i>Any hue outside this palette</span>
+    <div class="bal rv"><i style="background:#00274C;flex:60">BLUE 60%</i><i style="background:#FFCB05;color:#00274C;flex:30">MAIZE 30%</i><i style="background:#B31942;flex:10">RED 10%</i></div>
+    <p class="lead rv" style="margin-bottom:0">Red is the last colour the eye reaches, never the first. It never fills a field and never sets the wordmark. That order is what keeps the mark civic rather than partisan.</p>
+    <div class="avoid rv">
+      <span class="chip"><i style="background:linear-gradient(90deg,#dc2626,#2563eb)"></i>Red and blue with no maize between</span>
+      <span class="chip"><i style="background:linear-gradient(135deg,#00274C,#FFCB05,#B31942)"></i>Gradients between brand colours</span>
+      <span class="chip"><i style="background:linear-gradient(135deg,#9a9a9a,#f0f0f0,#8f8f8f)"></i>Metallics, chrome, gloss</span>
+      <span class="chip"><i style="background:#7c3aed"></i>Any hue outside this palette</span>
     </div>
   </div>
 </section>
 
 <section id="type">
   <div class="wrap">
-    <p class="kicker reveal">05 · Typography</p>
-    <h2 class="h reveal">Three weights, one voice</h2>
-    <p class="dek reveal">Barlow, open source, carries the whole mark — condensed and heavy for the wordmark, black italic for the numeral, upright and wide-tracked for the tagline.</p>
-    <div class="type-block reveal"><div class="role">Wordmark · Barlow Condensed ExtraBold Italic</div><div class="sample">Drive For</div><div class="type-meta"><span><b>Use</b> — DRIVE, FOR</span><span><b>Weight</b> — 800 italic</span><span><b>Tracking</b> — +4</span></div></div>
-    <div class="type-block numeral reveal"><div class="role">Numeral · Barlow Black Italic</div><div class="sample">75</div><div class="type-meta"><span><b>Use</b> — the 75 only</span><span><b>Weight</b> — 900 italic</span><span><b>Rule</b> — always the largest shape in the mark</span></div></div>
-    <div class="type-block tag reveal"><div class="role">Tagline · Barlow Bold</div><div class="sample">A GRASSROOTS MI INITIATIVE</div><div class="type-meta"><span><b>Use</b> — the tagline only</span><span><b>Weight</b> — 700 upright</span><span><b>Tracking</b> — +9, all caps</span></div></div>
+    <p class="eyebrow rv">05 — Typography</p>
+    <h2 class="rv">Three weights, one voice</h2>
+    <p class="lead rv">Barlow carries the whole mark — condensed and heavy for the wordmark, black italic for the numeral, upright and wide-tracked for the tagline. It is open source, so every partner can set type that matches.</p>
+    <div class="rv">
+      <div class="tblock"><div class="k">Wordmark · Barlow Condensed ExtraBold Italic</div><div class="sample">Drive For</div>
+        <div class="tmeta"><span><b>Use</b> — DRIVE, FOR</span><span><b>Weight</b> — 800 italic</span><span><b>Tracking</b> — +4</span></div></div>
+      <div class="tblock num"><div class="k">Numeral · Barlow Black Italic</div><div class="sample">75</div>
+        <div class="tmeta"><span><b>Use</b> — the numeral only</span><span><b>Weight</b> — 900 italic</span><span><b>Rule</b> — always the largest shape</span></div></div>
+      <div class="tblock tag"><div class="k">Tagline · Barlow Bold</div><div class="sample">A GRASSROOTS MI INITIATIVE</div>
+        <div class="tmeta"><span><b>Use</b> — the tagline only</span><span><b>Weight</b> — 700 upright</span><span><b>Tracking</b> — +9, all caps</span></div></div>
+    </div>
   </div>
 </section>
 
 <section id="scale">
   <div class="wrap">
-    <p class="kicker reveal">06 · Scale</p>
-    <h2 class="h reveal">Reads from a banner to a favicon</h2>
-    <p class="dek reveal">Drag the slider. No simplified version exists because none is needed — the silhouette holds on its own.</p>
-    <div class="scalebox reveal">
-      <div class="scale-stage"><img id="scaleImg" src="assets/svg/drive-for-75_full-color_no-tagline.svg" style="width:220px"></div>
-      <input type="range" id="scaleRange" min="16" max="320" value="220">
-      <div class="scale-readout"><span id="scaleReadout">220 px</span></div>
-      <div class="scale-marks"><span>16 · favicon</span><span>64 · app icon</span><span>320 · print</span></div>
+    <p class="eyebrow rv">06 — Scale</p>
+    <h2 class="rv">Reads from a banner to a favicon</h2>
+    <p class="lead rv">Drag the slider. There is no simplified small-size variant because none is needed — the silhouette carries on its own.</p>
+    <div class="scalebox rv">
+      <div class="scale-stage"><img id="scaleImg" src="assets/svg/drive-for-75_full-color_no-tagline.svg" alt="Scale test" style="width:220px"></div>
+      <input type="range" id="scaleRange" min="16" max="320" value="220" aria-label="Logo size">
+      <div class="readout" id="readout">220 px</div>
+      <div class="marks"><span>16 · favicon</span><span>64 · app icon</span><span>320 · print</span></div>
     </div>
   </div>
 </section>
 
 <section id="motion">
   <div class="wrap">
-    <p class="kicker reveal">07 · Motion</p>
-    <h2 class="h reveal">The stripes accelerate</h2>
-    <div class="motionrow reveal">
-      <div class="motion-stage" id="motionStage"><div class="mstripes"><i></i><i></i><i></i></div></div>
+    <p class="eyebrow rv">07 — Motion</p>
+    <h2 class="rv">The stripes accelerate</h2>
+    <p class="lead rv">The mark has one motion signature, and it is already built into the logo: three bars launching from the R, one after another, toward the 75.</p>
+    <div class="mrow rv">
+      <div class="mstage" id="mstage"><div class="bars"><i></i><i></i><i></i></div></div>
       <div>
-        <div class="motionsteps">
-          <div class="mstep"><span class="t">0–0.4s</span><p>The top stripe extends first, from zero width to full — the road catching up to the letter.</p></div>
-          <div class="mstep"><span class="t">0.12–0.5s</span><p>The red center stripe follows a beat later, same easing, same direction.</p></div>
-          <div class="mstep"><span class="t">0.24–0.6s</span><p>The bottom stripe completes the sequence. All three settle; nothing loops on its own.</p></div>
-          <div class="mstep"><span class="t">Rule</span><p>Use this once, on load — a dashboard header, a video intro. Never as a hover toy or a background loop.</p></div>
+        <div class="msteps">
+          <div class="mstep"><span class="t">0–0.7s</span><p>The top bar extends from zero to full width — the road catching up to the letter.</p></div>
+          <div class="mstep"><span class="t">0.12s</span><p>The red centre bar follows a beat later, same easing, same direction.</p></div>
+          <div class="mstep"><span class="t">0.24s</span><p>The bottom bar completes the sequence. All three settle and stay.</p></div>
+          <div class="mstep"><span class="t">Rule</span><p>Use it once, on load — a site header, a video intro, a dashboard. Never as a hover toy or an endless background loop.</p></div>
         </div>
-        <button class="replaybtn" id="replayBtn">Replay</button>
+        <button class="btn" id="replay" data-hover>Replay</button>
       </div>
     </div>
   </div>
@@ -346,112 +494,199 @@ footer a{color:var(--ink)}
 
 <section id="inuse">
   <div class="wrap">
-    <p class="kicker reveal">08 · In use</p>
-    <h2 class="h reveal">How it sits in the world</h2>
-    <div class="usegrid reveal">
-      <div class="usecard"><div class="stage"><div class="tshirt"><img src="assets/svg/drive-for-75_white_no-tagline.svg"></div></div><div class="cap">Captain T-shirt — white mark on navy</div></div>
-      <div class="usecard"><div class="stage"><div class="avatar-c"><img src="assets/svg/drive-for-75_white_no-tagline.svg"></div></div><div class="cap">Social avatar — cropped to the mark</div></div>
-      <div class="usecard"><div class="stage paper"><div class="favicon-tab"><div class="chip"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg">Drive for 75</div></div></div><div class="cap">Browser tab / dashboard favicon</div></div>
-      <div class="usecard"><div class="stage paper"><div class="signbox"><img src="assets/svg/drive-for-75_full-color.svg"></div></div><div class="cap">Yard sign, door hanger, flyer</div></div>
+    <p class="eyebrow rv">08 — In use</p>
+    <h2 class="rv">How it sits in the world</h2>
+    <p class="lead rv">The same four files cover almost everything the campaign prints, wears or posts.</p>
+    <div class="uses stag">
+      <div class="use" data-hover><div class="sq paper"><div class="tee"><img src="assets/svg/drive-for-75_white_no-tagline.svg" alt=""></div></div><div class="cap">Captain T-shirt — white mark on navy</div></div>
+      <div class="use" data-hover><div class="sq"><div class="avat"><img src="assets/svg/drive-for-75_white_no-tagline.svg" alt=""></div></div><div class="cap">Social avatar — cropped to the mark</div></div>
+      <div class="use" data-hover><div class="sq paper"><div class="tab"><div class="t"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg" alt="">Drive for 75</div></div></div><div class="cap">Browser tab and dashboard favicon</div></div>
+      <div class="use" data-hover><div class="sq paper"><div class="sign"><img src="assets/svg/drive-for-75_full-color.svg" alt=""></div></div><div class="cap">Yard sign, door hanger, flyer</div></div>
     </div>
   </div>
 </section>
 
 <section id="rules">
   <div class="wrap">
-    <p class="kicker reveal">09 · Rules</p>
-    <h2 class="h reveal">Keep it this way</h2>
-    <p class="dek reveal">Hover each card to see what breaks the mark.</p>
-    <div class="rules reveal">
-      <div class="rule r-rotate"><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>Don't rotate or mirror it. The star and stripes only make sense at true north.</p></div></div>
-      <div class="rule r-stretch"><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>Don't stretch or squash the mark to fill a space.</p></div></div>
-      <div class="rule r-recolor"><div class="demo"><img src="assets/svg/drive-for-75_white_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>Don't recolor the mark outside the four approved colors — no green, no purple, no brand-of-the-month palette.</p></div></div>
-      <div class="rule r-gradient"><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>No gradients, glows, or drop shadows. The mark is flat, always.</p></div></div>
-      <div class="rule r-field"><div class="demo"><img src="assets/svg/drive-for-75_white_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>Don't let red fill the background. Red marks the destination, never the field.</p></div></div>
-      <div class="rule r-outline"><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>Don't add an outline, stroke, or badge ring around the mark.</p></div></div>
+    <p class="eyebrow rv">09 — Rules</p>
+    <h2 class="rv">Keep it this way</h2>
+    <p class="lead rv">Hover each card to see what breaks the mark.</p>
+    <div class="rules stag">
+      <div class="rule r1" data-hover><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg" alt=""></div><div class="txt"><span class="x">✗</span><p>Don't rotate or mirror it. The star and the stripes only make sense at true north.</p></div></div>
+      <div class="rule r2" data-hover><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg" alt=""></div><div class="txt"><span class="x">✗</span><p>Don't stretch or squash the mark to fill a space.</p></div></div>
+      <div class="rule r3" data-hover><div class="demo"><img src="assets/svg/drive-for-75_white_no-tagline.svg" alt=""></div><div class="txt"><span class="x">✗</span><p>Don't recolour it outside the four approved values. No green, no purple, no colour of the month.</p></div></div>
+      <div class="rule r4" data-hover><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg" alt=""></div><div class="txt"><span class="x">✗</span><p>No gradients, glows or drop shadows. The mark is flat, always.</p></div></div>
+      <div class="rule r5" data-hover><div class="demo"><img src="assets/svg/drive-for-75_white_no-tagline.svg" alt=""></div><div class="txt"><span class="x">✗</span><p>Don't let red fill the background. Red marks the destination, never the field.</p></div></div>
+      <div class="rule r6" data-hover><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg" alt=""></div><div class="txt"><span class="x">✗</span><p>Don't add an outline, a keyline or a badge ring around the mark.</p></div></div>
     </div>
   </div>
 </section>
 
 <section id="download">
   <div class="wrap">
-    <p class="kicker reveal">10 · Download</p>
-    <h2 class="h reveal">Take the files</h2>
-    <p class="dek reveal">SVG for anything that scales, PDF for print vendors, transparent PNG at 4000px for everything else. Text is already converted to outlines — no font install required.</p>
-    <div class="dl-groups reveal">
-      <div class="dl-group">
-        <h4>Full color</h4>
-        <div class="dl-row"><div class="ic">75</div><div><div class="nm">Full color</div><div class="dsc">Primary lockup, light backgrounds</div></div><div class="links"><a href="assets/svg/drive-for-75_full-color.svg" download>SVG</a><a href="assets/pdf/drive-for-75_full-color.pdf" download>PDF</a><a href="assets/png/drive-for-75_full-color.png" download>PNG</a></div></div>
-        <div class="dl-row"><div class="ic">75</div><div><div class="nm">Full color · on dark</div><div class="dsc">Michigan Blue and dark backgrounds</div></div><div class="links"><a href="assets/svg/drive-for-75_full-color-on-dark.svg" download>SVG</a><a href="assets/pdf/drive-for-75_full-color-on-dark.pdf" download>PDF</a><a href="assets/png/drive-for-75_full-color-on-dark.png" download>PNG</a></div></div>
-        <div class="dl-row"><div class="ic">75</div><div><div class="nm">Full color · no tagline</div><div class="dsc">Favicon, avatars, small placements</div></div><div class="links"><a href="assets/svg/drive-for-75_full-color_no-tagline.svg" download>SVG</a><a href="assets/pdf/drive-for-75_full-color_no-tagline.pdf" download>PDF</a><a href="assets/png/drive-for-75_full-color_no-tagline.png" download>PNG</a></div></div>
+    <p class="eyebrow rv">10 — Download</p>
+    <h2 class="rv">Take the files</h2>
+    <p class="lead rv">SVG for anything that scales, PDF for print vendors, transparent PNG at 4000px for everything else. All type is already outlined, so nothing needs a font installed.</p>
+    <div class="dl rv">
+      <div class="grp"><h4>Full colour</h4>
+        <div class="row"><div class="ic">75</div><div><div class="nm">Full colour</div><div class="ds">Primary lockup, light backgrounds</div></div><div class="lk"><a href="assets/svg/drive-for-75_full-color.svg" download data-hover>SVG</a><a href="assets/pdf/drive-for-75_full-color.pdf" download data-hover>PDF</a><a href="assets/png/drive-for-75_full-color.png" download data-hover>PNG</a></div></div>
+        <div class="row"><div class="ic">75</div><div><div class="nm">Full colour · on dark</div><div class="ds">Michigan Blue and dark backgrounds</div></div><div class="lk"><a href="assets/svg/drive-for-75_full-color-on-dark.svg" download data-hover>SVG</a><a href="assets/pdf/drive-for-75_full-color-on-dark.pdf" download data-hover>PDF</a><a href="assets/png/drive-for-75_full-color-on-dark.png" download data-hover>PNG</a></div></div>
+        <div class="row"><div class="ic">75</div><div><div class="nm">Full colour · no tagline</div><div class="ds">Favicon, avatars, small placements</div></div><div class="lk"><a href="assets/svg/drive-for-75_full-color_no-tagline.svg" download data-hover>SVG</a><a href="assets/pdf/drive-for-75_full-color_no-tagline.pdf" download data-hover>PDF</a><a href="assets/png/drive-for-75_full-color_no-tagline.png" download data-hover>PNG</a></div></div>
       </div>
-      <div class="dl-group">
-        <h4>One color</h4>
-        <div class="dl-row"><div class="ic">1C</div><div><div class="nm">Black</div><div class="dsc">Single-color print, engraving</div></div><div class="links"><a href="assets/svg/drive-for-75_black.svg" download>SVG</a><a href="assets/pdf/drive-for-75_black.pdf" download>PDF</a><a href="assets/png/drive-for-75_black.png" download>PNG</a></div></div>
-        <div class="dl-row"><div class="ic">1C</div><div><div class="nm">White</div><div class="dsc">Reversed, screen print, vinyl</div></div><div class="links"><a href="assets/svg/drive-for-75_white.svg" download>SVG</a><a href="assets/pdf/drive-for-75_white.pdf" download>PDF</a><a href="assets/png/drive-for-75_white.png" download>PNG</a></div></div>
-        <div class="dl-row"><div class="ic">1C</div><div><div class="nm">Black · no tagline</div><div class="dsc">Stamps, line art</div></div><div class="links"><a href="assets/svg/drive-for-75_black_no-tagline.svg" download>SVG</a><a href="assets/pdf/drive-for-75_black_no-tagline.pdf" download>PDF</a><a href="assets/png/drive-for-75_black_no-tagline.png" download>PNG</a></div></div>
-        <div class="dl-row"><div class="ic">1C</div><div><div class="nm">White · no tagline</div><div class="dsc">Apparel on dark fabric</div></div><div class="links"><a href="assets/svg/drive-for-75_white_no-tagline.svg" download>SVG</a><a href="assets/pdf/drive-for-75_white_no-tagline.pdf" download>PDF</a><a href="assets/png/drive-for-75_white_no-tagline.png" download>PNG</a></div></div>
+      <div class="grp"><h4>One colour</h4>
+        <div class="row"><div class="ic">1C</div><div><div class="nm">Black</div><div class="ds">Single-colour print, engraving</div></div><div class="lk"><a href="assets/svg/drive-for-75_black.svg" download data-hover>SVG</a><a href="assets/pdf/drive-for-75_black.pdf" download data-hover>PDF</a><a href="assets/png/drive-for-75_black.png" download data-hover>PNG</a></div></div>
+        <div class="row"><div class="ic">1C</div><div><div class="nm">White</div><div class="ds">Reversed, screen print, vinyl</div></div><div class="lk"><a href="assets/svg/drive-for-75_white.svg" download data-hover>SVG</a><a href="assets/pdf/drive-for-75_white.pdf" download data-hover>PDF</a><a href="assets/png/drive-for-75_white.png" download data-hover>PNG</a></div></div>
+        <div class="row"><div class="ic">1C</div><div><div class="nm">Black · no tagline</div><div class="ds">Stamps, line art</div></div><div class="lk"><a href="assets/svg/drive-for-75_black_no-tagline.svg" download data-hover>SVG</a><a href="assets/pdf/drive-for-75_black_no-tagline.pdf" download data-hover>PDF</a><a href="assets/png/drive-for-75_black_no-tagline.png" download data-hover>PNG</a></div></div>
+        <div class="row"><div class="ic">1C</div><div><div class="nm">White · no tagline</div><div class="ds">Dark apparel, vinyl cut</div></div><div class="lk"><a href="assets/svg/drive-for-75_white_no-tagline.svg" download data-hover>SVG</a><a href="assets/pdf/drive-for-75_white_no-tagline.pdf" download data-hover>PDF</a><a href="assets/png/drive-for-75_white_no-tagline.png" download data-hover>PNG</a></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  Drive for 75 · Brand Identity v1 — A Grassroots MI Initiative &nbsp;·&nbsp; <a href="../">Logo concepts &amp; vote</a>
+  Drive for 75 · Brand Identity v1 — A Grassroots MI Initiative &nbsp;·&nbsp;
+  <a href="../" data-hover>Logo concepts &amp; team vote</a>
 </footer>
 
 <script>
-// theme toggle
-const root=document.documentElement, btn=document.getElementById('themeToggle'), label=document.getElementById('themeLabel');
-function applyTheme(t){root.setAttribute('data-theme',t);label.textContent=t==='dark'?'Dark':'Light';try{localStorage.setItem('d75-theme',t)}catch(e){}}
-let saved; try{saved=localStorage.getItem('d75-theme')}catch(e){}
-applyTheme(saved || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
-btn.onclick=()=>applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
+(function(){
+  var root=document.documentElement;
+  var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// reveal on scroll
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// colour swatch copy
-document.querySelectorAll('.swatch').forEach(s=>{
-  s.addEventListener('click',async()=>{
-    const hex=s.dataset.hex;
-    try{await navigator.clipboard.writeText(hex)}catch(e){}
-    s.classList.add('copied'); setTimeout(()=>s.classList.remove('copied'),1200);
-  });
-});
-
-// scale slider
-const range=document.getElementById('scaleRange'), img=document.getElementById('scaleImg'), readout=document.getElementById('scaleReadout');
-range.addEventListener('input',()=>{img.style.width=range.value+'px';readout.textContent=range.value+' px'+(range.value<=16?' · favicon':range.value<=64?' · app icon':'')});
-
-// motion replay
-const stage=document.getElementById('motionStage');
-function playMotion(){stage.classList.remove('play');void stage.offsetWidth;stage.classList.add('play')}
-document.getElementById('replayBtn').onclick=playMotion;
-const mio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){playMotion();mio.disconnect()}}),{threshold:.4});
-mio.observe(stage);
-
-// construction diagram: load the master SVG inline, tag groups, wire hover/click
-fetch('assets/svg/drive-for-75_full-color.svg').then(r=>r.text()).then(svg=>{
-  const holder=document.getElementById('constrHolder');
-  holder.innerHTML=svg;
-  const el=holder.querySelector('svg'); el.id='constrSvg'; el.removeAttribute('width'); el.removeAttribute('height'); el.style.width='100%';
-  ['map','star','wordmark','stripes','numeral','tagline'].forEach(id=>{
-    const g=el.querySelector('#'+id); if(g) g.setAttribute('data-part',id);
-  });
-  const specs=document.querySelectorAll('.spec');
-  function setActive(part){
-    el.classList.toggle('dim', !!part);
-    el.querySelectorAll('[data-part]').forEach(g=>g.classList.toggle('active', g.getAttribute('data-part')===part));
-    specs.forEach(s=>s.classList.toggle('active', s.dataset.part===part));
+  /* ── theme ── */
+  var btn=document.getElementById('themeBtn'), label=document.getElementById('themeLabel');
+  function setTheme(t){
+    root.setAttribute('data-theme',t);
+    label.textContent = t==='dark' ? 'Dark' : 'Light';
+    btn.classList.toggle('dark', t==='dark');
+    document.querySelectorAll('#heroLogo svg, #buildStage svg').forEach(function(el){
+      el.classList.toggle('darkart', t==='dark');
+    });
+    try{ localStorage.setItem('d75-theme',t); }catch(e){}
   }
-  specs.forEach(s=>{
-    s.addEventListener('mouseenter',()=>setActive(s.dataset.part));
-    s.addEventListener('mouseleave',()=>setActive(null));
-    s.addEventListener('click',()=>setActive(s.dataset.part));
+  var saved=null; try{ saved=localStorage.getItem('d75-theme'); }catch(e){}
+  setTheme(saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  btn.addEventListener('click',function(){ setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'); });
+
+  /* ── hero choreography ── */
+  var hero=document.getElementById('hero');
+  var words=hero.querySelectorAll('h1 span');
+  for(var i=0;i<words.length;i++) words[i].style.animationDelay=(2.6+i*0.07)+'s';
+  function startHero(){ hero.classList.add('go'); }
+  if(reduced){ startHero(); }
+  else {
+    requestAnimationFrame(function(){ requestAnimationFrame(startHero); });
+    /* safety net: never leave the hero hidden if rAF is paused (background tab, odd embed) */
+    setTimeout(startHero, 1500);
+  }
+
+  /* mark parallax */
+  var logo=document.getElementById('heroLogo');
+  if(!reduced && matchMedia('(pointer:fine)').matches){
+    logo.style.transition='transform .6s var(--ease)';
+    hero.addEventListener('mousemove',function(e){
+      var r=hero.getBoundingClientRect();
+      var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      logo.style.transform='translate('+(x*16)+'px,'+(y*10)+'px)';
+    });
+    hero.addEventListener('mouseleave',function(){ logo.style.transform=''; });
+  }
+
+  /* ── reveals ── */
+  var targets=[].slice.call(document.querySelectorAll('.rv,.stag'));
+  function revealAll(){ targets.forEach(function(el){ el.classList.add('in'); }); }
+  if(reduced || !('IntersectionObserver' in window)){ revealAll(); }
+  else{
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.14});
+    targets.forEach(function(el){ io.observe(el); });
+    /* anything already in view on load, plus a safety net so nothing stays invisible */
+    setTimeout(function(){
+      targets.forEach(function(el){
+        var r=el.getBoundingClientRect();
+        if(r.top < innerHeight && r.bottom > 0) el.classList.add('in');
+      });
+    },400);
+    setTimeout(revealAll,2500);
+  }
+
+  /* ── construction: clone the hero mark, no extra request ── */
+  var stage=document.getElementById('buildStage');
+  var src=logo.querySelector('svg');
+  if(src && stage){
+    var copy=src.cloneNode(true);
+    copy.removeAttribute('id');
+    copy.querySelectorAll('[class^="hs-"],[class*=" hs-"]').forEach(function(n){ n.removeAttribute('class'); });
+    var ring=copy.querySelector('.hs-ring'); if(ring) ring.remove();
+    ['map','star','stripes','wordmark','numeral','tagline'].forEach(function(id){
+      var el=copy.querySelector('#'+id); if(el) el.setAttribute('data-part',id);
+    });
+    copy.querySelectorAll('[id]').forEach(function(n){ n.removeAttribute('id'); });
+    if(root.getAttribute('data-theme')==='dark') copy.classList.add('darkart');
+    stage.appendChild(copy);
+    var specs=document.querySelectorAll('.spec');
+    function focus(part){
+      copy.classList.toggle('dim', !!part);
+      copy.querySelectorAll('[data-part]').forEach(function(g){ g.classList.toggle('act', g.getAttribute('data-part')===part); });
+      specs.forEach(function(s){ s.classList.toggle('act', s.dataset.part===part); });
+    }
+    specs.forEach(function(s){
+      s.addEventListener('mouseenter',function(){ focus(s.dataset.part); });
+      s.addEventListener('mouseleave',function(){ focus(null); });
+      s.addEventListener('click',function(){ focus(s.classList.contains('act')?null:s.dataset.part); });
+    });
+  }
+
+  /* ── swatches ── */
+  document.querySelectorAll('.sw').forEach(function(s){
+    s.addEventListener('click',function(){
+      var hex=s.getAttribute('data-hex');
+      (navigator.clipboard?navigator.clipboard.writeText(hex):Promise.reject())
+        .then(function(){ s.classList.add('done'); setTimeout(function(){ s.classList.remove('done'); },1400); })
+        .catch(function(){});
+    });
   });
-}).catch(()=>{});
+
+  /* ── scale ── */
+  var range=document.getElementById('scaleRange'), img=document.getElementById('scaleImg'), out=document.getElementById('readout');
+  range.addEventListener('input',function(){
+    var v=+range.value; img.style.width=v+'px';
+    out.textContent = v+' px' + (v<=16?' · favicon' : v<=64?' · app icon' : v>=280?' · print' : '');
+  });
+
+  /* ── motion demo ── */
+  var ms=document.getElementById('mstage');
+  function play(){ ms.classList.remove('play'); void ms.offsetWidth; ms.classList.add('play'); }
+  document.getElementById('replay').addEventListener('click',play);
+  var io2=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ play(); io2.disconnect(); } }); },{threshold:.45});
+  io2.observe(ms);
+
+  /* ── progress + active nav ── */
+  var prog=document.getElementById('prog'), links=document.querySelectorAll('nav .links a'), secs=[];
+  links.forEach(function(a){ var el=document.querySelector(a.getAttribute('href')); if(el) secs.push([a,el]); });
+  function onScroll(){
+    var p=root.scrollTop/(root.scrollHeight-root.clientHeight);
+    prog.style.width=(p*100)+'%';
+    var y=root.scrollTop+130, cur=null;
+    secs.forEach(function(s){ if(s[1].offsetTop<=y) cur=s[0]; });
+    links.forEach(function(a){ a.classList.toggle('on',a===cur); });
+  }
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  /* ── cursor ── */
+  var cur=document.getElementById('cur');
+  if(!reduced && matchMedia('(pointer:fine)').matches){
+    var cx=0,cy=0,tx=0,ty=0,shown=false;
+    addEventListener('mousemove',function(e){ tx=e.clientX; ty=e.clientY; if(!shown){ shown=true; cur.style.opacity=.85; } });
+    (function loop(){ cx+=(tx-cx)*.2; cy+=(ty-cy)*.2; cur.style.left=cx+'px'; cur.style.top=cy+'px'; requestAnimationFrame(loop); })();
+    document.addEventListener('mouseover',function(e){
+      cur.classList.toggle('big', !!(e.target.closest && e.target.closest('[data-hover]')));
+    });
+    document.addEventListener('mouseleave',function(){ cur.style.opacity=0; });
+    document.addEventListener('mouseenter',function(){ cur.style.opacity=.85; });
+  }
+})();
 </script>
 </body>
 </html>
