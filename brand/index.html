@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drive for 75 — Brand Identity</title>
+<meta name="description" content="Brand identity guide for Drive for 75, a nonpartisan grassroots voter-turnout initiative in Michigan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,900&family=Barlow+Condensed:ital,wght@0,500;0,600;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#00274C; --blue-2:#01315e; --maize:#FFCB05; --red:#B31942; --white:#FFFFFF;
+  --bg:#FAF8F2; --panel:#FFFFFF; --ink:#0E1B2A; --sub:#4a5568; --line:#E4E1D6;
+  --mono-r:0,39,76;
+}
+:root[data-theme="dark"]{
+  --bg:#071427; --panel:#0c1e38; --ink:#F5F4EE; --sub:#a9b6c9; --line:#1c3253;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Barlow",sans-serif;transition:background .3s,color .3s}
+img{max-width:100%;display:block}
+::selection{background:var(--maize);color:var(--blue)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.dispcond{font-family:"Barlow Condensed",sans-serif}
+
+/* NAV */
+nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .row{display:flex;align-items:center;gap:28px;height:60px}
+.brandmark{display:flex;align-items:center;gap:8px;font-family:"Barlow Condensed";font-weight:800;font-style:italic;font-size:19px;letter-spacing:.01em;color:var(--ink);text-decoration:none;flex-shrink:0}
+.brandmark .sw{width:11px;height:11px;border-radius:2px;background:var(--red)}
+.navlinks{display:flex;gap:22px;flex:1;overflow-x:auto;scrollbar-width:none}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{color:var(--sub);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap;transition:.2s}
+.navlinks a:hover{color:var(--ink)}
+.themebtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:7px 14px;font:600 12px "Barlow";cursor:pointer;display:flex;align-items:center;gap:7px;flex-shrink:0}
+.themebtn .dot{width:9px;height:9px;border-radius:50%;background:var(--maize)}
+
+/* HERO */
+.hero{padding:120px 0 90px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,transparent 0 78px, color-mix(in srgb, var(--ink) 5%, transparent) 78px 80px);
+  mask-image:linear-gradient(180deg,black,transparent 70%); pointer-events:none}
+.hero .eyebrow{font:700 12px/1 "Barlow";letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin:0 0 26px}
+.hero .mark{max-width:560px;margin:0 auto 30px;position:relative;z-index:1}
+.hero .mark img{width:100%}
+.hero h1{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:clamp(30px,4.4vw,52px);margin:0 0 16px;letter-spacing:.005em}
+.hero p.lede{max-width:560px;margin:0 auto;color:var(--sub);font-size:17px;line-height:1.6}
+.hero .cred{margin-top:44px;font-size:12px;color:var(--sub);letter-spacing:.03em}
+.scrollcue{margin-top:50px;font:700 11px "Barlow";letter-spacing:.2em;color:var(--sub);text-transform:uppercase}
+.scrollcue::after{content:"";display:block;width:1px;height:34px;background:var(--line);margin:10px auto 0;animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);opacity:.3}50%{transform:scaleY(1);opacity:1}}
+
+/* SECTION shell */
+section{padding:96px 0;border-top:1px solid var(--line)}
+.kicker{font:700 12px "Barlow";letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin:0 0 10px}
+h2.h{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:clamp(30px,4.2vw,46px);margin:0 0 18px;letter-spacing:.005em}
+p.dek{max-width:640px;color:var(--sub);font-size:16.5px;line-height:1.65;margin:0 0 48px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* 01 IDEA */
+.idea-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.idea-card{background:var(--panel);padding:30px 24px;min-height:220px;display:flex;flex-direction:column;gap:14px}
+.idea-card .n{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:38px;color:var(--line)}
+.idea-card h3{margin:0;font-family:"Barlow Condensed";font-weight:700;font-size:19px;letter-spacing:.01em}
+.idea-card p{margin:0;color:var(--sub);font-size:14.5px;line-height:1.55;flex:1}
+.idea-card .tag{align-self:flex-start;font:700 10.5px "Barlow";letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:5px;color:#fff}
+@media(max-width:860px){.idea-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.idea-grid{grid-template-columns:1fr}}
+
+/* 02 CONSTRUCTION */
+.constr{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:start}
+.constr .stage{position:sticky;top:90px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:34px;display:flex;align-items:center;justify-content:center;min-height:340px}
+.constr .stage svg-holder{display:block}
+#constrSvg{width:100%;height:auto}
+#constrSvg [data-part]{transition:opacity .35s}
+#constrSvg.dim [data-part]{opacity:.14}
+#constrSvg.dim [data-part].active{opacity:1}
+.speclist{display:grid;gap:2px}
+.spec{padding:18px 20px;border:1px solid var(--line);border-radius:10px;cursor:pointer;transition:.2s;background:var(--panel)}
+.spec + .spec{margin-top:10px}
+.spec:hover,.spec.active{border-color:var(--red)}
+.spec b{display:block;font-family:"Barlow Condensed";font-weight:700;font-size:16.5px;margin-bottom:5px}
+.spec span{color:var(--sub);font-size:13.5px;line-height:1.55}
+.spec code{background:color-mix(in srgb, var(--ink) 6%, transparent);padding:1px 6px;border-radius:4px;font-size:12.5px}
+@media(max-width:900px){.constr{grid-template-columns:1fr}.constr .stage{position:static}}
+
+/* 03 LOCKUPS */
+.lockups{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.lock-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
+.lock-swatch{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:22px}
+.lock-swatch img{width:100%}
+.lock-meta{padding:12px 14px;border-top:1px solid var(--line)}
+.lock-meta b{display:block;font-family:"Barlow Condensed";font-weight:700;font-size:14.5px}
+.lock-meta span{color:var(--sub);font-size:12px}
+@media(max-width:900px){.lockups{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.lockups{grid-template-columns:1fr}}
+
+/* 04 COLOUR */
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:44px}
+.swatch{border-radius:14px;padding:22px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;border:1px solid var(--line);position:relative;transition:transform .2s}
+.swatch:hover{transform:translateY(-4px)}
+.swatch b{font-family:"Barlow Condensed";font-weight:700;font-size:19px}
+.swatch span{font-size:12.5px;opacity:.9;font-family:monospace}
+.swatch small{font-size:11px;opacity:.75;display:block;margin-top:6px}
+.swatch .copied{position:absolute;top:14px;right:14px;font:700 10px "Barlow";letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.92);color:#000;padding:4px 8px;border-radius:6px;opacity:0;transition:.2s}
+.swatch.copied .copied{opacity:1}
+@media(max-width:860px){.swatches{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.swatches{grid-template-columns:1fr}}
+.balance{display:flex;height:38px;border-radius:8px;overflow:hidden;margin-bottom:14px}
+.balance i{display:flex;align-items:center;justify-content:center;font:700 11px "Barlow";color:#fff;letter-spacing:.04em}
+.avoid{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+.avoidchip{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:7px 14px 7px 8px;font-size:13px;color:var(--sub)}
+.avoidchip i{width:20px;height:20px;border-radius:50%;display:inline-block}
+
+/* 05 TYPE */
+.type-block{border:1px solid var(--line);border-radius:14px;padding:34px;margin-bottom:18px;background:var(--panel)}
+.type-block .role{font:700 11px "Barlow";letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.type-block .sample{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-size:clamp(38px,6vw,68px);line-height:1;margin:0 0 18px}
+.type-block.numeral .sample{font-family:"Barlow";font-weight:900;font-style:italic;color:var(--red)}
+.type-block.tag .sample{font-family:"Barlow";font-weight:700;font-style:normal;font-size:clamp(20px,3vw,30px);letter-spacing:.09em}
+.type-meta{display:flex;gap:26px;flex-wrap:wrap;color:var(--sub);font-size:13px}
+.type-meta b{color:var(--ink)}
+
+/* 06 SCALE */
+.scalebox{border:1px solid var(--line);border-radius:16px;padding:44px;text-align:center;background:var(--panel)}
+.scale-stage{display:flex;align-items:center;justify-content:center;height:220px}
+.scale-stage img{transition:width .1s linear}
+input[type=range]{width:100%;max-width:420px;margin:28px auto 8px;accent-color:var(--red)}
+.scale-readout{font:700 13px "Barlow Condensed";letter-spacing:.05em;color:var(--sub)}
+.scale-marks{display:flex;justify-content:space-between;max-width:420px;margin:0 auto;color:var(--sub);font-size:11px}
+
+/* 07 MOTION */
+.motionrow{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.motion-stage{border:1px solid var(--line);border-radius:16px;padding:50px 30px;background:var(--panel);display:flex;align-items:center;justify-content:center;min-height:220px}
+.mstripes{display:flex;flex-direction:column;gap:9px;width:220px}
+.mstripes i{height:20px;border-radius:0 3px 3px 0;transform-origin:left center;transform:scaleX(0)}
+.mstripes i:nth-child(1){background:var(--maize)}
+.mstripes i:nth-child(2){background:var(--red)}
+.mstripes i:nth-child(3){background:var(--maize)}
+.motion-stage.play .mstripes i{animation:mgrow 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+.motion-stage.play .mstripes i:nth-child(1){animation-delay:0s}
+.motion-stage.play .mstripes i:nth-child(2){animation-delay:.12s}
+.motion-stage.play .mstripes i:nth-child(3){animation-delay:.24s}
+@keyframes mgrow{to{transform:scaleX(1)}}
+.motionsteps{display:grid;gap:16px}
+.mstep{display:flex;gap:16px}
+.mstep .t{font-family:"Barlow Condensed";font-weight:700;color:var(--red);width:64px;flex-shrink:0;font-size:13px;padding-top:2px}
+.mstep p{margin:0;color:var(--sub);font-size:14px;line-height:1.55}
+.replaybtn{margin-top:8px;border:1px solid var(--line);background:transparent;color:var(--ink);padding:9px 18px;border-radius:999px;font:700 12px "Barlow";cursor:pointer}
+@media(max-width:860px){.motionrow{grid-template-columns:1fr}}
+
+/* 08 IN USE */
+.usegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.usecard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+.usecard .stage{height:170px;display:flex;align-items:center;justify-content:center;background:var(--blue);position:relative;overflow:hidden}
+.usecard .stage.paper{background:#fff}
+.usecard .cap{padding:11px 14px;font-size:12.5px;color:var(--sub);border-top:1px solid var(--line)}
+.tshirt{width:120px;height:140px;background:#fff;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 140'%3E%3Cpath d='M30 5 L45 15 L60 10 L75 15 L90 5 L118 28 L100 48 L90 40 L90 135 L30 135 L30 40 L20 48 L2 28 Z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 140'%3E%3Cpath d='M30 5 L45 15 L60 10 L75 15 L90 5 L118 28 L100 48 L90 40 L90 135 L30 135 L30 40 L20 48 L2 28 Z'/%3E%3C/svg%3E") center/contain no-repeat;display:flex;align-items:center;justify-content:center}
+.tshirt img{width:64px}
+.avatar-c{width:104px;height:104px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;overflow:hidden;border:3px solid var(--maize)}
+.avatar-c img{width:78px}
+.favicon-tab{background:#e7e7ea;border-radius:8px 8px 0 0;padding:10px 16px 0;display:flex;align-items:center;gap:8px;width:180px}
+.favicon-tab .chip{background:#fff;border-radius:6px 6px 0 0;padding:7px 10px;display:flex;align-items:center;gap:6px;font:12px Arial;color:#333}
+.favicon-tab .chip img{width:14px;height:14px}
+.signbox{width:150px;height:100px;background:#fff;border:6px solid var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center;padding:8px}
+@media(max-width:900px){.usegrid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.usegrid{grid-template-columns:1fr}}
+
+/* 09 RULES */
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rule{border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;background:var(--panel)}
+.rule .demo{height:130px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb, var(--ink) 4%, var(--panel))}
+.rule .demo img{width:64%;transition:transform .4s ease,filter .4s ease}
+.rule:hover .demo img{filter:none}
+.rule .txt{padding:16px 18px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
+.rule .x{color:var(--red);font-weight:800;flex-shrink:0}
+.rule p{margin:0;font-size:13.5px;color:var(--sub);line-height:1.5}
+.r-rotate:hover img{transform:rotate(18deg)}
+.r-stretch:hover img{transform:scaleX(1.5)}
+.r-recolor .demo{background:#0b6b3a}
+.r-gradient .demo img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))}
+.r-gradient:hover .demo img{filter:drop-shadow(0 22px 10px rgba(0,0,0,.5)) saturate(1.4)}
+.r-field .demo{background:var(--red)}
+.r-outline:hover img{filter:drop-shadow(0 0 0 3px var(--maize)) drop-shadow(2px 0 0 var(--maize)) drop-shadow(-2px 0 0 var(--maize))}
+@media(max-width:860px){.rules{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.rules{grid-template-columns:1fr}}
+
+/* 10 DOWNLOAD */
+.dl-groups{display:grid;gap:28px}
+.dl-group h4{font-family:"Barlow Condensed";font-weight:700;font-size:16px;margin:0 0 12px;color:var(--sub);letter-spacing:.03em;text-transform:uppercase}
+.dl-row{display:flex;align-items:center;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+.dl-row .ic{width:40px;height:40px;border-radius:9px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font:700 11px "Barlow Condensed";flex-shrink:0}
+.dl-row .nm{font-weight:600;font-size:14.5px}
+.dl-row .dsc{color:var(--sub);font-size:12.5px}
+.dl-row .links{margin-left:auto;display:flex;gap:10px;flex-shrink:0}
+.dl-row a{color:var(--ink);text-decoration:none;font:700 12px "Barlow";border:1px solid var(--line);padding:7px 13px;border-radius:8px;transition:.15s}
+.dl-row a:hover{border-color:var(--red);color:var(--red)}
+
+footer{padding:50px 0 70px;text-align:center;color:var(--sub);font-size:12.5px;border-top:1px solid var(--line)}
+footer a{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<nav class="top"><div class="wrap row">
+  <a class="brandmark" href="#top"><span class="sw"></span>DRIVE FOR 75</a>
+  <div class="navlinks">
+    <a href="#idea">Idea</a><a href="#construction">Construction</a><a href="#lockups">Lockups</a>
+    <a href="#colour">Colour</a><a href="#type">Type</a><a href="#scale">Scale</a><a href="#motion">Motion</a>
+    <a href="#inuse">In use</a><a href="#rules">Rules</a><a href="#download">Download</a>
+  </div>
+  <button class="themebtn" id="themeToggle"><span class="dot"></span><span id="themeLabel">Light</span></button>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Brand identity guide · Michigan pilot</p>
+    <div class="mark"><img src="assets/svg/drive-for-75_full-color.svg" alt="Drive for 75 logo"></div>
+    <h1>The road is the message.</h1>
+    <p class="lede">Interstate 75 runs from Detroit to the tip of the Lower Peninsula and keeps going south through five more states. The mark is built from that road — three colors, one number, zero ambiguity about what it stands for.</p>
+    <p class="cred">A Grassroots MI Initiative — brand guide v1</p>
+    <div class="scrollcue">Scroll</div>
+  </div>
+</header>
+
+<section id="idea">
+  <div class="wrap">
+    <p class="kicker reveal">01 · The idea</p>
+    <h2 class="h reveal">Four ideas, one number</h2>
+    <p class="dek reveal">75 means two things at once: the target — 75% participation — and Interstate 75, the highway that already connects Michigan's Muslim communities and points the way south, city by city.</p>
+    <div class="idea-grid reveal">
+      <div class="idea-card"><span class="n">01</span><h3>Michigan</h3><p>The pilot state. Every captain, every household, every mosque this year is inside this silhouette.</p><span class="tag" style="background:var(--blue)">The map</span></div>
+      <div class="idea-card"><span class="n">02</span><h3>Detroit</h3><p>Where the work starts. The star sits in the southeast corner of the Lower Peninsula, not the geographic center of the state.</p><span class="tag" style="background:var(--red)">The star</span></div>
+      <div class="idea-card"><span class="n">03</span><h3>Interstate 75</h3><p>The corridor south. Every future city — Toledo, Cincinnati, Atlanta — is another exit on the same road.</p><span class="tag" style="background:#a8860b">The stripes</span></div>
+      <div class="idea-card"><span class="n">04</span><h3>75%</h3><p>The goal. It is the biggest shape in the mark on purpose — nothing else in this logo is allowed to outweigh it.</p><span class="tag" style="background:#333">The numeral</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="construction">
+  <div class="wrap">
+    <p class="kicker reveal">02 · Construction</p>
+    <h2 class="h reveal">Every part earns its place</h2>
+    <p class="dek reveal">Click a spec to see exactly what it controls. Nothing in this mark is decorative — the map, the star, the stripes and the numeral are all load-bearing.</p>
+    <div class="constr reveal">
+      <div class="stage"><div id="constrHolder" style="width:100%"></div></div>
+      <div class="speclist" id="specList">
+        <div class="spec" data-part="map"><b>Michigan map</b><span>Full state silhouette, both peninsulas, solid <code>#00274C</code>. No county lines, no lakes cut out — recognizable at a glance, nothing to lose at small sizes.</span></div>
+        <div class="spec" data-part="star"><b>Detroit star</b><span>Positioned at roughly <code>88.5%</code> across and <code>87%</code> down the map's bounding box — Metro Detroit, southeast corner. <code>#B31942</code> fill, thin white keyline so it reads on the dark map.</span></div>
+        <div class="spec" data-part="wordmark"><b>Wordmark</b><span>"DRIVE" and "FOR" stacked, heavy italic condensed caps, <code>#00274C</code>. Cap height sets the module every other element is measured against.</span></div>
+        <div class="spec" data-part="stripes"><b>Motion stripes</b><span>Three tapered bars — maize / red / maize — launched from the right edge of the R with a constant keyline gap, cut parallel to the diagonal of the 7. Top bar longest, none touch the numeral.</span></div>
+        <div class="spec" data-part="numeral"><b>75</b><span>Spans both wordmark lines, <code>#B31942</code>, heavy italic. It is the single largest shape in the mark — every other element is sized to stay secondary to it.</span></div>
+        <div class="spec" data-part="tagline"><b>Tagline</b><span>"A GRASSROOTS MI INITIATIVE" — <code>#00274C</code>, wide letterspacing, roughly a quarter the cap height of the wordmark. Establishes Grassroots MI as the parent without competing with the mark.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lockups">
+  <div class="wrap">
+    <p class="kicker reveal">03 · Lockups</p>
+    <h2 class="h reveal">One mark, every background</h2>
+    <p class="dek reveal">Full color is the default. Reach for the reversed, one-color, or no-tagline version only when the situation calls for it — never redraw the mark to fit.</p>
+    <div class="lockups reveal">
+      <div class="lock-card"><div class="lock-swatch" style="background:#fff"><img src="assets/svg/drive-for-75_full-color.svg"></div><div class="lock-meta"><b>Full color</b><span>Light backgrounds — the default</span></div></div>
+      <div class="lock-card"><div class="lock-swatch" style="background:#00274C"><img src="assets/svg/drive-for-75_full-color-on-dark.svg"></div><div class="lock-meta"><b>Full color · on dark</b><span>Michigan Blue, black, photo backgrounds</span></div></div>
+      <div class="lock-card"><div class="lock-swatch" style="background:#fff"><img src="assets/svg/drive-for-75_black.svg"></div><div class="lock-meta"><b>One color · black</b><span>Engraving, faxes, single-color print</span></div></div>
+      <div class="lock-card"><div class="lock-swatch" style="background:#111"><img src="assets/svg/drive-for-75_white.svg"></div><div class="lock-meta"><b>One color · white</b><span>Reversed, screen print, vinyl</span></div></div>
+      <div class="lock-card"><div class="lock-swatch" style="background:#fff"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg"></div><div class="lock-meta"><b>No tagline</b><span>Favicon, avatars, embroidery</span></div></div>
+      <div class="lock-card"><div class="lock-swatch" style="background:#00274C"><img src="assets/svg/drive-for-75_full-color-on-dark_no-tagline.svg"></div><div class="lock-meta"><b>No tagline · on dark</b><span>Dashboard header, dark UI</span></div></div>
+      <div class="lock-card"><div class="lock-swatch" style="background:#fff"><img src="assets/svg/drive-for-75_black_no-tagline.svg"></div><div class="lock-meta"><b>Black · no tagline</b><span>Stamps, line art, laser etching</span></div></div>
+      <div class="lock-card"><div class="lock-swatch" style="background:#111"><img src="assets/svg/drive-for-75_white_no-tagline.svg"></div><div class="lock-meta"><b>White · no tagline</b><span>Yard signs, apparel on dark fabric</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="colour">
+  <div class="wrap">
+    <p class="kicker reveal">04 · Colour</p>
+    <h2 class="h reveal">Michigan and the flag, balanced</h2>
+    <p class="dek reveal">Blue leads, maize bridges, red marks the destination. Click a swatch to copy its hex.</p>
+    <div class="swatches reveal">
+      <div class="swatch" data-hex="#00274C" style="background:#00274C;color:#fff"><span class="copied">Copied</span><b>Michigan Blue</b><span>#00274C</span><small>PMS 282 · the map, the wordmark</small></div>
+      <div class="swatch" data-hex="#FFCB05" style="background:#FFCB05;color:#00274C"><span class="copied">Copied</span><b>Michigan Maize</b><span>#FFCB05</span><small>PMS 7406 · the stripes</small></div>
+      <div class="swatch" data-hex="#B31942" style="background:#B31942;color:#fff"><span class="copied">Copied</span><b>Old Glory Red</b><span>#B31942</span><small>US flag red · the 75, the star</small></div>
+      <div class="swatch" data-hex="#FFFFFF" style="background:#fff;color:#00274C;border:1px solid var(--line)"><span class="copied">Copied</span><b>White</b><span>#FFFFFF</span><small>Star keyline, reversed lockups</small></div>
+    </div>
+    <div class="balance reveal">
+      <i style="background:#00274C;width:60%">BLUE 60%</i><i style="background:#FFCB05;color:#00274C;width:30%">MAIZE 30%</i><i style="background:#B31942;width:10%">RED 10%</i>
+    </div>
+    <p class="dek reveal" style="margin-bottom:0">Red is the last color the eye reaches, never the first — it never fills a field and never sets the wordmark. That order is what keeps the mark civic instead of partisan.</p>
+    <div class="avoid reveal">
+      <span class="avoidchip"><i style="background:linear-gradient(90deg,#dc2626,#2563eb)"></i>Red + blue with no maize between</span>
+      <span class="avoidchip"><i style="background:linear-gradient(135deg,#00274C,#FFCB05,#B31942)"></i>Gradients between brand colors</span>
+      <span class="avoidchip"><i style="background:linear-gradient(135deg,#999,#eee,#999)"></i>Metallics, chrome, glossy fills</span>
+      <span class="avoidchip"><i style="background:#7c3aed"></i>Any hue outside this palette</span>
+    </div>
+  </div>
+</section>
+
+<section id="type">
+  <div class="wrap">
+    <p class="kicker reveal">05 · Typography</p>
+    <h2 class="h reveal">Three weights, one voice</h2>
+    <p class="dek reveal">Barlow, open source, carries the whole mark — condensed and heavy for the wordmark, black italic for the numeral, upright and wide-tracked for the tagline.</p>
+    <div class="type-block reveal"><div class="role">Wordmark · Barlow Condensed ExtraBold Italic</div><div class="sample">Drive For</div><div class="type-meta"><span><b>Use</b> — DRIVE, FOR</span><span><b>Weight</b> — 800 italic</span><span><b>Tracking</b> — +4</span></div></div>
+    <div class="type-block numeral reveal"><div class="role">Numeral · Barlow Black Italic</div><div class="sample">75</div><div class="type-meta"><span><b>Use</b> — the 75 only</span><span><b>Weight</b> — 900 italic</span><span><b>Rule</b> — always the largest shape in the mark</span></div></div>
+    <div class="type-block tag reveal"><div class="role">Tagline · Barlow Bold</div><div class="sample">A GRASSROOTS MI INITIATIVE</div><div class="type-meta"><span><b>Use</b> — the tagline only</span><span><b>Weight</b> — 700 upright</span><span><b>Tracking</b> — +9, all caps</span></div></div>
+  </div>
+</section>
+
+<section id="scale">
+  <div class="wrap">
+    <p class="kicker reveal">06 · Scale</p>
+    <h2 class="h reveal">Reads from a banner to a favicon</h2>
+    <p class="dek reveal">Drag the slider. No simplified version exists because none is needed — the silhouette holds on its own.</p>
+    <div class="scalebox reveal">
+      <div class="scale-stage"><img id="scaleImg" src="assets/svg/drive-for-75_full-color_no-tagline.svg" style="width:220px"></div>
+      <input type="range" id="scaleRange" min="16" max="320" value="220">
+      <div class="scale-readout"><span id="scaleReadout">220 px</span></div>
+      <div class="scale-marks"><span>16 · favicon</span><span>64 · app icon</span><span>320 · print</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="motion">
+  <div class="wrap">
+    <p class="kicker reveal">07 · Motion</p>
+    <h2 class="h reveal">The stripes accelerate</h2>
+    <div class="motionrow reveal">
+      <div class="motion-stage" id="motionStage"><div class="mstripes"><i></i><i></i><i></i></div></div>
+      <div>
+        <div class="motionsteps">
+          <div class="mstep"><span class="t">0–0.4s</span><p>The top stripe extends first, from zero width to full — the road catching up to the letter.</p></div>
+          <div class="mstep"><span class="t">0.12–0.5s</span><p>The red center stripe follows a beat later, same easing, same direction.</p></div>
+          <div class="mstep"><span class="t">0.24–0.6s</span><p>The bottom stripe completes the sequence. All three settle; nothing loops on its own.</p></div>
+          <div class="mstep"><span class="t">Rule</span><p>Use this once, on load — a dashboard header, a video intro. Never as a hover toy or a background loop.</p></div>
+        </div>
+        <button class="replaybtn" id="replayBtn">Replay</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="inuse">
+  <div class="wrap">
+    <p class="kicker reveal">08 · In use</p>
+    <h2 class="h reveal">How it sits in the world</h2>
+    <div class="usegrid reveal">
+      <div class="usecard"><div class="stage"><div class="tshirt"><img src="assets/svg/drive-for-75_white_no-tagline.svg"></div></div><div class="cap">Captain T-shirt — white mark on navy</div></div>
+      <div class="usecard"><div class="stage"><div class="avatar-c"><img src="assets/svg/drive-for-75_white_no-tagline.svg"></div></div><div class="cap">Social avatar — cropped to the mark</div></div>
+      <div class="usecard"><div class="stage paper"><div class="favicon-tab"><div class="chip"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg">Drive for 75</div></div></div><div class="cap">Browser tab / dashboard favicon</div></div>
+      <div class="usecard"><div class="stage paper"><div class="signbox"><img src="assets/svg/drive-for-75_full-color.svg"></div></div><div class="cap">Yard sign, door hanger, flyer</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap">
+    <p class="kicker reveal">09 · Rules</p>
+    <h2 class="h reveal">Keep it this way</h2>
+    <p class="dek reveal">Hover each card to see what breaks the mark.</p>
+    <div class="rules reveal">
+      <div class="rule r-rotate"><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>Don't rotate or mirror it. The star and stripes only make sense at true north.</p></div></div>
+      <div class="rule r-stretch"><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>Don't stretch or squash the mark to fill a space.</p></div></div>
+      <div class="rule r-recolor"><div class="demo"><img src="assets/svg/drive-for-75_white_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>Don't recolor the mark outside the four approved colors — no green, no purple, no brand-of-the-month palette.</p></div></div>
+      <div class="rule r-gradient"><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>No gradients, glows, or drop shadows. The mark is flat, always.</p></div></div>
+      <div class="rule r-field"><div class="demo"><img src="assets/svg/drive-for-75_white_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>Don't let red fill the background. Red marks the destination, never the field.</p></div></div>
+      <div class="rule r-outline"><div class="demo"><img src="assets/svg/drive-for-75_full-color_no-tagline.svg"></div><div class="txt"><span class="x">✗</span><p>Don't add an outline, stroke, or badge ring around the mark.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <p class="kicker reveal">10 · Download</p>
+    <h2 class="h reveal">Take the files</h2>
+    <p class="dek reveal">SVG for anything that scales, PDF for print vendors, transparent PNG at 4000px for everything else. Text is already converted to outlines — no font install required.</p>
+    <div class="dl-groups reveal">
+      <div class="dl-group">
+        <h4>Full color</h4>
+        <div class="dl-row"><div class="ic">75</div><div><div class="nm">Full color</div><div class="dsc">Primary lockup, light backgrounds</div></div><div class="links"><a href="assets/svg/drive-for-75_full-color.svg" download>SVG</a><a href="assets/pdf/drive-for-75_full-color.pdf" download>PDF</a><a href="assets/png/drive-for-75_full-color.png" download>PNG</a></div></div>
+        <div class="dl-row"><div class="ic">75</div><div><div class="nm">Full color · on dark</div><div class="dsc">Michigan Blue and dark backgrounds</div></div><div class="links"><a href="assets/svg/drive-for-75_full-color-on-dark.svg" download>SVG</a><a href="assets/pdf/drive-for-75_full-color-on-dark.pdf" download>PDF</a><a href="assets/png/drive-for-75_full-color-on-dark.png" download>PNG</a></div></div>
+        <div class="dl-row"><div class="ic">75</div><div><div class="nm">Full color · no tagline</div><div class="dsc">Favicon, avatars, small placements</div></div><div class="links"><a href="assets/svg/drive-for-75_full-color_no-tagline.svg" download>SVG</a><a href="assets/pdf/drive-for-75_full-color_no-tagline.pdf" download>PDF</a><a href="assets/png/drive-for-75_full-color_no-tagline.png" download>PNG</a></div></div>
+      </div>
+      <div class="dl-group">
+        <h4>One color</h4>
+        <div class="dl-row"><div class="ic">1C</div><div><div class="nm">Black</div><div class="dsc">Single-color print, engraving</div></div><div class="links"><a href="assets/svg/drive-for-75_black.svg" download>SVG</a><a href="assets/pdf/drive-for-75_black.pdf" download>PDF</a><a href="assets/png/drive-for-75_black.png" download>PNG</a></div></div>
+        <div class="dl-row"><div class="ic">1C</div><div><div class="nm">White</div><div class="dsc">Reversed, screen print, vinyl</div></div><div class="links"><a href="assets/svg/drive-for-75_white.svg" download>SVG</a><a href="assets/pdf/drive-for-75_white.pdf" download>PDF</a><a href="assets/png/drive-for-75_white.png" download>PNG</a></div></div>
+        <div class="dl-row"><div class="ic">1C</div><div><div class="nm">Black · no tagline</div><div class="dsc">Stamps, line art</div></div><div class="links"><a href="assets/svg/drive-for-75_black_no-tagline.svg" download>SVG</a><a href="assets/pdf/drive-for-75_black_no-tagline.pdf" download>PDF</a><a href="assets/png/drive-for-75_black_no-tagline.png" download>PNG</a></div></div>
+        <div class="dl-row"><div class="ic">1C</div><div><div class="nm">White · no tagline</div><div class="dsc">Apparel on dark fabric</div></div><div class="links"><a href="assets/svg/drive-for-75_white_no-tagline.svg" download>SVG</a><a href="assets/pdf/drive-for-75_white_no-tagline.pdf" download>PDF</a><a href="assets/png/drive-for-75_white_no-tagline.png" download>PNG</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Drive for 75 · Brand Identity v1 — A Grassroots MI Initiative &nbsp;·&nbsp; <a href="../">Logo concepts &amp; vote</a>
+</footer>
+
+<script>
+// theme toggle
+const root=document.documentElement, btn=document.getElementById('themeToggle'), label=document.getElementById('themeLabel');
+function applyTheme(t){root.setAttribute('data-theme',t);label.textContent=t==='dark'?'Dark':'Light';try{localStorage.setItem('d75-theme',t)}catch(e){}}
+let saved; try{saved=localStorage.getItem('d75-theme')}catch(e){}
+applyTheme(saved || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+btn.onclick=()=>applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// colour swatch copy
+document.querySelectorAll('.swatch').forEach(s=>{
+  s.addEventListener('click',async()=>{
+    const hex=s.dataset.hex;
+    try{await navigator.clipboard.writeText(hex)}catch(e){}
+    s.classList.add('copied'); setTimeout(()=>s.classList.remove('copied'),1200);
+  });
+});
+
+// scale slider
+const range=document.getElementById('scaleRange'), img=document.getElementById('scaleImg'), readout=document.getElementById('scaleReadout');
+range.addEventListener('input',()=>{img.style.width=range.value+'px';readout.textContent=range.value+' px'+(range.value<=16?' · favicon':range.value<=64?' · app icon':'')});
+
+// motion replay
+const stage=document.getElementById('motionStage');
+function playMotion(){stage.classList.remove('play');void stage.offsetWidth;stage.classList.add('play')}
+document.getElementById('replayBtn').onclick=playMotion;
+const mio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){playMotion();mio.disconnect()}}),{threshold:.4});
+mio.observe(stage);
+
+// construction diagram: load the master SVG inline, tag groups, wire hover/click
+fetch('assets/svg/drive-for-75_full-color.svg').then(r=>r.text()).then(svg=>{
+  const holder=document.getElementById('constrHolder');
+  holder.innerHTML=svg;
+  const el=holder.querySelector('svg'); el.id='constrSvg'; el.removeAttribute('width'); el.removeAttribute('height'); el.style.width='100%';
+  ['map','star','wordmark','stripes','numeral','tagline'].forEach(id=>{
+    const g=el.querySelector('#'+id); if(g) g.setAttribute('data-part',id);
+  });
+  const specs=document.querySelectorAll('.spec');
+  function setActive(part){
+    el.classList.toggle('dim', !!part);
+    el.querySelectorAll('[data-part]').forEach(g=>g.classList.toggle('active', g.getAttribute('data-part')===part));
+    specs.forEach(s=>s.classList.toggle('active', s.dataset.part===part));
+  }
+  specs.forEach(s=>{
+    s.addEventListener('mouseenter',()=>setActive(s.dataset.part));
+    s.addEventListener('mouseleave',()=>setActive(null));
+    s.addEventListener('click',()=>setActive(s.dataset.part));
+  });
+}).catch(()=>{});
+</script>
+</body>
+</html>
